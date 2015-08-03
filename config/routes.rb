@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  devise_for :users
+  root 'office_hours#open'
+>>>>>>> 156688b... Generate Devise user model and associated Devise views
 =======
   devise_for :users
   root 'office_hours#open'
