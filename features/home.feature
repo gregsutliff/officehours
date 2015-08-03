@@ -16,9 +16,4 @@ are treated in accordance with the Law of Demeter.
     Then I will be redirected to my department listing
 
 
-Feature: Redirect to Login/Signup if not logged in
-
-  Scenario: I am not logged in
-    When I visit the home page
-    Then I am redirected to the login page
 
