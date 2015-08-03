@@ -5,8 +5,8 @@ Feature: I want to disalllow weak passwords
   Background:
     Given I am on the login page
 
-  Context: User enters a weak password
-    When I enter a weak password
+  Scenario: User enters a weak password
+    Given I enter a weak password
     Then I am immediately prompted to make it stronger
 
 
