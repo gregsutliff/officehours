@@ -1,6 +1,6 @@
 class OfficeHoursController < ApplicationController
  
-  def open
+  def index
 
   end
 
