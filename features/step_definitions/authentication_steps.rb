@@ -18,6 +18,3 @@ When(/^I am a department curator$/) do
     pending # express the regexp above with the code you wish you had
 end
 
-When(/^I am an organizer$/) do
-    pending # express the regexp above with the code you wish you had
-end
