@@ -1,9 +1,13 @@
 Feature: Render Home Page for only authorized users
-  Users must be logged in in order to view the homepage
+
+The privacy of members is enhanced if faculty curators
+are treated in accordance with the Law of Demeter.
+
+  Background: I am logged in
 
   Scenario: I am an organizer
     When I visit the home page
-    And I am a regular user
+    And I am an organizer             
     Then The Home Page will be rendered
 
   Scenario: I am a faculty curator
@@ -12,4 +16,9 @@ Feature: Render Home Page for only authorized users
     Then I will be redirected to my department listing
 
 
+Feature: Redirect to Login/Signup if not logged in
+
+  Scenario: I am not logged in
+    When I visit the home page
+    Then I am redirected to the login page
 
