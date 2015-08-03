@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'office_hours#open'
-  Generate Devise user model and associated Devise views
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
