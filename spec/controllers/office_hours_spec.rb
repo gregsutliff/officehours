@@ -40,12 +40,6 @@ RSpec.describe OfficeHoursController, type: :controller  do
     end
 
     context 'when user is not logged in' do
-      it 'redirects them to the login page' do
-      get :index
-      end
-
-      it 'sets a flash message notifying them that they must be logged in' do
-      end
     end
   end
 end
