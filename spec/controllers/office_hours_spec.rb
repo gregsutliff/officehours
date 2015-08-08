@@ -1,3 +1,4 @@
+require 'support/controller_helpers'
 require 'rails_helper'
 
 RSpec.describe OfficeHoursController, type: :controller  do
@@ -5,9 +6,8 @@ RSpec.describe OfficeHoursController, type: :controller  do
     context 'when user is logged in' do
 
       context 'when user is organizer' do
+        login_user
         before(:each){ 
-          user = FactoryGirl.create(:user, :role => 3)
-          sign_in user
           get :index}
 
         it { is_expected.to respond_with :ok }
@@ -16,9 +16,8 @@ RSpec.describe OfficeHoursController, type: :controller  do
       end
 
       context 'when user is department curator' do
+        login_curator
         it 'redirects them to their department curation page' do
-          get :index
-          sign_in FactoryGirl.create(:user, :role => 2)
           expect(subject).to redirect_to(curate_url)
 
         end
