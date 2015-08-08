@@ -3,7 +3,8 @@ class OfficeHour < ActiveRecord::Base
 
   belongs_to :member
 
-  scope :open, -> (day, time) { where(:day => day).where("? BETWEEN strftime('%H:%M', start) AND strftime('%H:%M', stop)", time)}
+  scope :open, -> (day, time) { where(:day => day).where("? BETWEEN TIME(start) AND TIME(stop)", time)}
+
 
 
 end

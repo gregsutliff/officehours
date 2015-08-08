@@ -33,6 +33,11 @@ RSpec.describe OfficeHour, type: :model do
       hours = OfficeHour.open(1, '12:00')
       expect(hours).not_to include hour
     end
+
+    it "returns an empty array if no office hours are open" do
+      hours = OfficeHour.open(1, '01:00') 
+      expect(hours).to be_empty
+    end
     
   end
 end
