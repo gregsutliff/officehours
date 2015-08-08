@@ -21,5 +21,19 @@ RSpec.describe OfficeHour, type: :model do
     hour = FactoryGirl.build(:office_hour, :member_id => "")
     expect(hour).not_to be_valid
   end
+
+  describe ".open(day,time)" do
+    let(:hour){FactoryGirl.create(:office_hour, :day => 1, :start => '09:00', :stop => '11:00')}
+    it "returns office hours that are open at the specified day and time" do
+      hours = OfficeHour.open(1, '10:00')
+      expect(hours).to include hour
+    end
+
+    it "does not return office hours that are not open" do
+      hours = OfficeHour.open(1, '12:00')
+      expect(hours).not_to include hour
+    end
+    
+  end
 end
 
