@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150808191334) do
+ActiveRecord::Schema.define(version: 20150808193830) do
 
   create_table "members", force: :cascade do |t|
     t.string   "firstname"
@@ -20,6 +20,17 @@ ActiveRecord::Schema.define(version: 20150808191334) do
     t.datetime "updated_at", null: false
     t.integer  "uin"
   end
+
+  create_table "office_hours", force: :cascade do |t|
+    t.integer  "day"
+    t.time     "start"
+    t.time     "stop"
+    t.integer  "member_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "office_hours", ["member_id"], name: "index_office_hours_on_member_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
