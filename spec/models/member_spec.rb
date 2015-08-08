@@ -19,4 +19,10 @@ RSpec.describe Member, :type => :model do
     member = FactoryGirl.build(:member, :uin => "")
     expect(member).not_to be_valid
   end
+
+  it "must have a unique UIN" do
+    FactoryGirl.create(:member, :uin => 1234567)
+    member = FactoryGirl.build(:member, :uin => 1234567)
+    expect(member).not_to be_valid
+  end
 end
