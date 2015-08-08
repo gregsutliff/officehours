@@ -14,25 +14,21 @@ RSpec.describe OfficeHoursController, type: :controller  do
 
     context 'when user is department curator' do
       login_curator
-      before(:each){get :index }
-      it { is_expected.to redirect_to(curate_url) }
+      before(:each) do
+        get :index 
+      end
 
+      it { is_expected.to redirect_to(curate_url) }
       it "sets a flash message notifying them that they can't view that" do
-        sign_in FactoryGirl.create(:user, :role => 2)
-        get :index
         expect(flash[:notice]).to be_present 
       end
     end
-
-
-    context 'when user is admin' do
-      it 'renders active office hour index' do
-        sign_in FactoryGirl.create(:user, :role => 1)
+    context 'when user is not logged in' do
+      before(:each) do
         get :index
       end
-    end
 
-    context 'when user is not logged in' do
+      it { is_expected.to redirect_to(new_user_session_url) }
     end
   end
 end

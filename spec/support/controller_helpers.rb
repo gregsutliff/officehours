@@ -14,4 +14,12 @@ module ControllerMacros
       sign_in curator
     end
   end
+
+  def login_admin
+    before(:each) do
+      @request.env["devise.mapping"] = Devise.mappings[:user]
+      admin = FactoryGirl.create(:user, :role => 1)
+      sign_in admin
+    end
+  end
 end
