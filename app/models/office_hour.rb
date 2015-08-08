@@ -1,3 +1,5 @@
 class OfficeHour < ActiveRecord::Base
+  validates :day, :start, :stop, :member_id,  presence: true
+
   belongs_to :member
 end
