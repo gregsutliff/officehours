@@ -3,4 +3,5 @@ class Member < ActiveRecord::Base
   validates :uin, :uniqueness => true
   has_many :office_hours, dependent: :destroy
   belongs_to :building
+  belongs_to :office
 end
