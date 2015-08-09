@@ -38,7 +38,20 @@ RSpec.describe OfficeHour, type: :model do
       hours = OfficeHour.open(1, '01:00') 
       expect(hours).to be_empty
     end
-    
+  end
+
+  describe ".in_building(building_id)" do
+    before(:each) {FactoryGirl.create(:building) }
+    let(:hour){FactoryGirl.create(:office_hour, :building_id => 1)}
+    it "returns office hours that exist for the specified building" do
+      hours = OfficeHour.in_building(1)
+      expect(hours).to include hour
+    end
+
+    it "does not return office hours that exist for other buildings" do
+      hours = OfficeHour.in_building(2)
+      expect(hours).not_to include hour
+    end
   end
 end
 

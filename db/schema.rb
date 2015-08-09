@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150808193830) do
+ActiveRecord::Schema.define(version: 20150809104001) do
+
+  create_table "buildings", force: :cascade do |t|
+    t.string   "fullname"
+    t.string   "abbrev"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "members", force: :cascade do |t|
     t.string   "firstname"
@@ -26,10 +33,12 @@ ActiveRecord::Schema.define(version: 20150808193830) do
     t.time     "start"
     t.time     "stop"
     t.integer  "member_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "building_id"
   end
 
+  add_index "office_hours", ["building_id"], name: "index_office_hours_on_building_id"
   add_index "office_hours", ["member_id"], name: "index_office_hours_on_member_id"
 
   create_table "users", force: :cascade do |t|
