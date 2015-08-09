@@ -1,1 +1,13 @@
-<h3>This is the index!</h3>
+<div class='row'>
+  <div class='col-xs-12'>
+    <h4>Results</h4>
+    <table class="table table-responsive">
+      <% @open_hours.each do |h| %>
+        <tr class 'hour'>
+          <td<%= h %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+        
