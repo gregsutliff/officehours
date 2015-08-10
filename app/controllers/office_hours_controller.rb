@@ -2,13 +2,21 @@ class OfficeHoursController < ApplicationController
  
   def index
     redirect_curators
-    @open_hours = OfficeHour.open(1,'11:00')
+    @open_hours = OfficeHour.open(day, now)
   end
 
 
 
 
   private
+
+	def now
+		Time.now.strftime('%H:%M')	
+	end
+
+	def day
+		Time.now.strftime('%w')
+	end
 
   def redirect_curators
     if current_user.role == 2
