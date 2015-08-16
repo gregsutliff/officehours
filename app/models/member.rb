@@ -4,4 +4,8 @@ class Member < ActiveRecord::Base
   has_many :office_hours, dependent: :destroy
   belongs_to :building
   belongs_to :office
+
+	def fullname
+		firstname + " " + lastname
+	end
 end

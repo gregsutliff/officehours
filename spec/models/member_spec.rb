@@ -25,4 +25,11 @@ RSpec.describe Member, :type => :model do
     member = FactoryGirl.build(:member, :uin => 1234567)
     expect(member).not_to be_valid
   end
+
+	describe "#fullname" do
+		let(:member){FactoryGirl.create(:member, :firstname => "Greg", :lastname => "Sutliff")}
+		it "returns a member's full name" do
+			expect(member.fullname).to eq "Greg Sutliff"
+		end
+	end
 end
