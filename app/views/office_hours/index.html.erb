@@ -4,7 +4,8 @@
     <table class="table table-responsive">
       <% @open_hours.each do |h| %>
         <tr class 'hour'>
-					<td><%= h %></td>
+					<td><%= h.member_fullname %></td>
+					<td><%= h.building_fullname %></td>
         </tr>
       <% end %>
     </table>

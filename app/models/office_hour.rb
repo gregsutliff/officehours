@@ -9,5 +9,6 @@ class OfficeHour < ActiveRecord::Base
   scope :in_building, -> (building_id) { where(:building_id => building_id)}
 
 	delegate :fullname, to: :member, prefix: true
+	delegate :fullname, to: :building, prefix: true
 
 end
