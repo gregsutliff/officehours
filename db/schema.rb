@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150809110319) do
+ActiveRecord::Schema.define(version: 20150817143320) do
 
   create_table "buildings", force: :cascade do |t|
     t.string   "fullname"
@@ -23,10 +23,15 @@ ActiveRecord::Schema.define(version: 20150809110319) do
   create_table "members", force: :cascade do |t|
     t.string   "firstname"
     t.string   "lastname"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "uin"
+    t.integer  "building_id"
+    t.integer  "office_id"
   end
+
+  add_index "members", ["building_id"], name: "index_members_on_building_id"
+  add_index "members", ["office_id"], name: "index_members_on_office_id"
 
   create_table "office_hours", force: :cascade do |t|
     t.integer  "day"
