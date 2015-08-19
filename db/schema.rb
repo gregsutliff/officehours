@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150817143320) do
+ActiveRecord::Schema.define(version: 20150819145819) do
 
   create_table "buildings", force: :cascade do |t|
     t.string   "fullname"
@@ -23,14 +23,12 @@ ActiveRecord::Schema.define(version: 20150817143320) do
   create_table "members", force: :cascade do |t|
     t.string   "firstname"
     t.string   "lastname"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer  "uin"
-    t.integer  "building_id"
     t.integer  "office_id"
   end
 
-  add_index "members", ["building_id"], name: "index_members_on_building_id"
   add_index "members", ["office_id"], name: "index_members_on_office_id"
 
   create_table "office_hours", force: :cascade do |t|
@@ -38,12 +36,10 @@ ActiveRecord::Schema.define(version: 20150817143320) do
     t.time     "start"
     t.time     "stop"
     t.integer  "member_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "building_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "office_hours", ["building_id"], name: "index_office_hours_on_building_id"
   add_index "office_hours", ["member_id"], name: "index_office_hours_on_member_id"
 
   create_table "offices", force: :cascade do |t|
