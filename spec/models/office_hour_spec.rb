@@ -41,8 +41,10 @@ RSpec.describe OfficeHour, type: :model do
   end
 
   describe ".in_building(building_id)" do
-    before(:each) {FactoryGirl.create(:building) }
-    let(:hour){FactoryGirl.create(:office_hour, :building_id => 1)}
+	 let(:building){FactoryGirl.create(:building)}
+	 let(:office){FactoryGirl.create(:office, :building_id => 1)}
+	 let(:member){FactoryGirl.create(:member, office: office)}
+	 let(:hour){FactoryGirl.create(:office_hour, member: member)}
     it "returns office hours that exist for the specified building" do
       hours = OfficeHour.in_building(1)
       expect(hours).to include hour

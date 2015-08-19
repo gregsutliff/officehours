@@ -4,7 +4,6 @@ FactoryGirl.define do
     start "2015-08-08 14:38:30"
     stop "2015-08-08 14:38:30"
     member_id 17 
-    building_id 1
   end
 
 end
