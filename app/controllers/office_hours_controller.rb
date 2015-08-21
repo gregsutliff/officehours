@@ -2,10 +2,8 @@ class OfficeHoursController < ApplicationController
  
   def index
     redirect_curators
-    @open_hours = OfficeHour.includes(:member, :building, :office).open(day, now)
+    @open_hours = OfficeHour.includes(:member, :building, :office, :department).open(day, now)
   end
-
-
 
 
   private
@@ -24,6 +22,7 @@ class OfficeHoursController < ApplicationController
       redirect_to(curate_url)
     end
   end
+
 
 end
 

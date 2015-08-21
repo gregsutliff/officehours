@@ -3,6 +3,7 @@ class OfficeHour < ActiveRecord::Base
   belongs_to :member
 	has_one :office, :through => :member
 	has_one :building, :through => :office 
+	has_one :department, :through => :member
 
   scope :open, -> (day, time) { where(:day => day).where("? BETWEEN TIME(start) AND TIME(stop)", time)}
   scope :in_building, -> (building_id) { where(:building_id => building_id)}
@@ -10,5 +11,6 @@ class OfficeHour < ActiveRecord::Base
 
 	delegate :fullname, to: :member, prefix: true
 	delegate :fullname, to: :building, prefix: true
+	delegate :name, to: :department, prefix: true
 
 end
