@@ -10,6 +10,7 @@ namespace :db do
 			member.lastname = Faker::Name.last_name
 			member.uin = Faker::Number.number(9)
 			member.office_id = Faker::Number.between(1,100)
+			member.department_id = Faker::Number.between(1,3)
 			member.save
 		end
 		10.times do
@@ -32,6 +33,10 @@ namespace :db do
 			hour.stop = Faker::Time.between(2.days.ago, Time.now, :night)
 			hour.member_id = Faker::Number.between(1,50)
 			hour.save
+		end
+
+		['Philosophy', 'Biology', 'Math'].each do |n|
+			dept = Department.create(:name => n)
 		end
 	end
 end

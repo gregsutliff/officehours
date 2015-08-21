@@ -4,6 +4,7 @@ FactoryGirl.define do
     lastname "MyString"
     uin 1847382
 		office
+		department
   end
 
 end

@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :department do
-    name "MyString"
-abbrev "MyString"
+    name "Mathematics"
+		abbrev "MATH"
   end
 
 end
