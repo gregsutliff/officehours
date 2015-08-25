@@ -19,9 +19,6 @@ RSpec.describe OfficeHoursController, type: :controller  do
       end
 
       it { is_expected.to redirect_to(curate_url) }
-      it "sets a flash message notifying them that they can't view that" do
-        expect(flash[:notice]).to be_present 
-      end
     end
     context 'when user is not logged in' do
       before(:each) do

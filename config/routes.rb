@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'department/curate'
+
   devise_for :users
   root 'office_hours#index'
   get 'department/curate' => 'department#edit', as: :curate
