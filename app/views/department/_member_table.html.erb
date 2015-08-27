@@ -12,10 +12,10 @@
 			<tr>
 				<td><%= m.fullname %></td>
 				<td><%= m.department_name %></td>
-				<td><%= m.building_fullname %></td>
-				<td><%= m.office.door_number %></td>
-				<td>Blank</td>
-				<td>Blank</td>
+				<td><%= m.building_fullname unless m.building_fullname.nil? %></td>
+				<td><%= m.office.door_number unless m.office.door_number.nil? %></td>
+				<td><%= m.uic_email unless m.uic_email.nil? %></td>
+				<td><%= m.non_uic_email unless m.non_uic_email.nil? %></td>
 			</tr>
 		<% end %>
 	<% end %>
