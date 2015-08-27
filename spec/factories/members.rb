@@ -8,7 +8,7 @@ FactoryGirl.define do
 
 		factory :member_with_office_hour do
 			after(:create) do |member|
-				FactoryGirl.create(:office_hour, member: member, :start => '08:00', :stop => '10:00', :day => 4) 
+				FactoryGirl.create(:office_hour, member: member, :start => '08:00', :stop => '12:00', :day => 4) 
 			end
 		end
   end
