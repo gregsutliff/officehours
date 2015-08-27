@@ -5,6 +5,6 @@ class DepartmentController < ApplicationController
 			flash[:notice] = "You can't go there"
 		end
 		department = current_user.department
-		@members = department.members
+		@members = department.members.includes(:office, :building, :department)
 	end
 end

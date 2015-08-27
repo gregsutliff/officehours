@@ -6,6 +6,8 @@ class Member < ActiveRecord::Base
 	has_one :building, :through => :office
   has_many :office_hours, dependent: :destroy
 	delegate :name, :to => :department, :prefix => true
+	delegate :fullname, :to => :building, :prefix => true
+	delegate :name, :to => :office, :prefix => true
 
 	def fullname
 		firstname + " " + lastname

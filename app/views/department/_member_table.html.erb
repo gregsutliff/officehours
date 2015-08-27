@@ -1,0 +1,23 @@
+<table class="table">
+	<th>
+		<!--There is zero reason to show the uin -->
+		<td>Member</td>
+		<td>Department</td>
+		<td>Building</td>
+		<td>Office</td>
+		<td>Uic Email</td>
+		<td>Non-Uic Email</td>
+	</th>
+	<% unless @members.nil? %>
+		<% @members.each do |m| %>
+			<tr>
+				<td><%= m.fullname %></td>
+				<td><%= m.department_name %></td>
+				<td><%= m.building_fullname %></td>
+				<td><%= m.office %></td>
+				<td>Blank</td>
+				<td>Blank</td>
+			</tr>
+		<% end %>
+	<% end %>
+</table>
