@@ -5,6 +5,7 @@ class Member < ActiveRecord::Base
 	belongs_to :department
 	has_one :building, :through => :office
   has_many :office_hours, dependent: :destroy
+	delegate :name, :to => :department, :prefix => true
 
 	def fullname
 		firstname + " " + lastname

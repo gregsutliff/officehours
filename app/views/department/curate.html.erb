@@ -1,1 +1,14 @@
 <h1><%= current_user.department_name %> Department Dashboard</h1>
+<table class="table">
+	<th>
+		<td>Name</td>
+	</th>
+	<% unless @members.nil? %>
+		<% @members.each do |m| %>
+			<tr>
+				<td><%= m.firstname %></td>
+			</tr>
+		<% end %>
+	<% end %>
+</table>
+

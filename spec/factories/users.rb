@@ -5,7 +5,7 @@ FactoryGirl.define do
     password "password1948"
     password_confirmation "password1948"
     confirmed_at Date.today
-		department 
+		department
   end
 
 end
