@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :member do
     firstname "Greg"
     lastname "Sutliff"
-    uin 1847382
+    uin Faker::Number.number(9)
 		office
 		department
   end

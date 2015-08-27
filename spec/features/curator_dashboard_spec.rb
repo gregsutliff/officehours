@@ -11,6 +11,7 @@ describe "Curator Dashboard" do
 			expect(page).to have_content("You can't go there")
 		end
 	end
+
 	context "When the user is a curator" do
 		let!(:user){FactoryGirl.create(:user, :role => 2)}
 		let!(:greg){FactoryGirl.create(:member, :department => user.department)}
@@ -28,5 +29,7 @@ describe "Curator Dashboard" do
 			expect(page).to have_content("Greg")
 		end
 	end
+
+
 
 end

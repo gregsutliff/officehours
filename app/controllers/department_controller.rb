@@ -7,4 +7,7 @@ class DepartmentController < ApplicationController
 		department = current_user.department
 		@members = department.members.includes(:office, :building, :department)
 	end
+
+	def edit_member
+	end
 end
