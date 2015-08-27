@@ -9,5 +9,12 @@ class DepartmentController < ApplicationController
 	end
 
 	def edit_member
+		@current_member = Member.find(user_params)
+	end
+
+	private
+
+	def user_params
+		params.require(:member_id)
 	end
 end

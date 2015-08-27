@@ -13,9 +13,10 @@ describe "Curator Member Editing" do
 		expect(page).to have_content("Edit Member")
 	end
 
-	it "is possible to open a member edit window" do
+	it "is possible to open a member edit window for a given member" do
 		click_link "Edit Member"
 		expect(page).to have_content "Save"
+		expect(page).to have_content "Greg"
 	end
 end
 
