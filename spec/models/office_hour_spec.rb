@@ -39,5 +39,13 @@ RSpec.describe OfficeHour, type: :model do
       expect(hours).to be_empty
     end
   end
+
+	describe "#time_remaining" do
+		let(:hour){FactoryGirl.build(:office_hour, :start => '09:00', :stop => '11:00')}
+		it "returns the time left until the end of an open office hour" do
+			now = '10:00'
+			expect(hour.time_left(now)).to eq 60
+		end
+	end
 end
 

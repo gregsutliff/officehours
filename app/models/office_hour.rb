@@ -13,4 +13,8 @@ class OfficeHour < ActiveRecord::Base
 	delegate :fullname, to: :building, prefix: true
 	delegate :name, to: :department, prefix: true
 
+	def time_left(present_time)
+		((stop.strftime('%H:%M').to_time - present_time.to_time)/60).to_i
+	end
+
 end

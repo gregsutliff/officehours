@@ -16,6 +16,11 @@
 							<li><%= h.department_name %></li>
 						</ul>
 					</td>
+					<td>
+						<ul>
+							<li><%= h.time_left(Time.now.strftime('%H:%M')) %>min left</li>
+						</ul>
+					</td>
         </tr>
       <% end %>
     </table>

@@ -5,6 +5,12 @@ FactoryGirl.define do
     uin Faker::Number.number(9)
 		office
 		department
+
+		factory :member_with_office_hour do
+			after(:create) do |member|
+				FactoryGirl.create(:office_hour, member: member, :start => '08:00', :stop => '10:00', :day => 4) 
+			end
+		end
   end
 
 end
