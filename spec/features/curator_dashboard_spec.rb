@@ -14,7 +14,7 @@ describe "Curator Dashboard" do
 
 	context "When the user is a curator" do
 		let!(:user){FactoryGirl.create(:user, :role => 2)}
-		let!(:greg){FactoryGirl.create(:member, :department => user.department)}
+		let!(:greg){FactoryGirl.create(:member_with_office, :department => user.department)}
 		before(:each) do
 			visit root_path
 			fill_in "Email", :with => user.email

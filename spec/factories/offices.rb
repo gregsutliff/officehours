@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :office do
-    door_number "MyString"
+    door_number "1414"
 		building
   end
 

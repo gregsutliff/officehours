@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :building do
-    fullname "MyString"
-    abbrev "MyString"
+    fullname "Behavioral Sciences Building"
+    abbrev "BSB"
   end
 
 end

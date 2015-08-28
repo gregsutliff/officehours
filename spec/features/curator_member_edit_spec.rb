@@ -1,8 +1,8 @@
 
 describe "The member edit page" do
 	let!(:user){FactoryGirl.create(:user, :role => 2)}
-	let!(:member){FactoryGirl.create(:member, :department => user.department)}
 	let!(:building){FactoryGirl.create(:building, :fullname => "University Hall")}
+	let!(:member){FactoryGirl.create(:member_with_office, :department => user.department)}
 	before(:each) do
 		visit root_path
 		fill_in "Email", :with => user.email
