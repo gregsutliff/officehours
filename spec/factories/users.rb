@@ -7,5 +7,4 @@ FactoryGirl.define do
     confirmed_at Date.today
 		department
   end
-
 end
