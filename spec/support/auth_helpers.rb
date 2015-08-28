@@ -1,18 +1,19 @@
 module AuthHelpers
 
 	def log_in_user
-		user = FactoryGirl.create(:user, :role => 3)
+		user = create(:user, :role => 3)
 		fill_login_form(user)
 	end
 
 	def log_in_admin
-		user = FactoryGirl.create(:user, :role => 1)
+		user = create(:user, :role => 1)
 		fill_login_form(user)
 	end
 
 	def log_in_curator
 		user = create(:user, :role => 2)
 		fill_login_form(user)
+		return user
 	end
 
 	private

@@ -1,7 +1,6 @@
 
 describe "The Office Hour Index Page" do
-	let!(:member){FactoryGirl.create(:member_with_office_hour)}
-	let!(:user){FactoryGirl.create(:user)}
+	let!(:member){create(:member_with_office_hour)}
 	before(:each) do
 		log_in_user
 	end
