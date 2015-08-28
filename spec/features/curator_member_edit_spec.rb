@@ -1,7 +1,8 @@
 
-describe "Curator Member Editing" do
+describe "The member edit page" do
 	let!(:user){FactoryGirl.create(:user, :role => 2)}
 	let!(:member){FactoryGirl.create(:member, :department => user.department)}
+	let!(:building){FactoryGirl.create(:building, :fullname => "University Hall")}
 	before(:each) do
 		visit root_path
 		fill_in "Email", :with => user.email
@@ -9,14 +10,16 @@ describe "Curator Member Editing" do
 		click_button "Log in"
 	end
 
-	it "should be on the dashboard page" do
-		expect(page).to have_content("Edit Member")
-	end
 
-	it "is possible to open a member edit window for a given member" do
+	it "allows you to update a member's building" do
 		click_link "Edit Member"
 		expect(page).to have_content "Save"
 		expect(page).to have_content "Greg"
+		select "University Hall", :from => "member[building]"
+		click_button "Update Member"
+		expect(current_path).to eq curate_path
+		expect(page).to have_content("Member was successfully updated.")
 	end
+
 end
 

@@ -1,5 +1,5 @@
 
-describe "Countdowns" do
+describe "The Office Hour Index Page" do
 	let!(:member){FactoryGirl.create(:member_with_office_hour)}
 	let!(:user){FactoryGirl.create(:user)}
 	before(:each) do
