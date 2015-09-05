@@ -1,5 +1,5 @@
 class DepartmentController < ApplicationController
-  def curate
+  def index
 		if current_user.role == 3
 			redirect_to root_path
 			flash[:notice] = "You can't go there"
@@ -8,9 +8,6 @@ class DepartmentController < ApplicationController
 		@members = department.members.includes(:office, :building, :department)
 	end
 
-	def edit_member
-		@current_member = Member.find(user_params)
-	end
 
 	private
 
