@@ -3,6 +3,7 @@ class MemberController < ApplicationController
   end
 
 	def edit
+		@current_member = Member.find(user_params)
 	end
 
   def read
@@ -15,4 +16,10 @@ class MemberController < ApplicationController
 
   def destroy
   end
+
+	private
+
+	def user_params
+		params.require(:member_id)
+	end
 end
