@@ -7,9 +7,6 @@ RSpec.describe OfficeHoursController, type: :controller  do
       login_user
       before(:each){ get :index }
 
-      it { is_expected.to respond_with :ok }
-      it { is_expected.to render_with_layout :application }
-      it { is_expected.to render_template :index }
     end
 
     context 'when user is department curator' do
