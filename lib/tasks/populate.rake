@@ -19,6 +19,9 @@ namespace :db do
 			building.abbrev = Faker::Hacker.abbreviation
 			building.save
 		end
+
+		User.create(:email => "organizer@gmail.com", :password => "password", :role => 3, :confirmed_at => Time.now)
+
 		100.times do
 			office = Office.new
 			office.door_number = Faker::Number.between(1,200)
@@ -26,10 +29,10 @@ namespace :db do
 			office.save
 		end
 
-		100.times do
+		500.times do
 			hour = OfficeHour.new
 			hour.day = Faker::Number.between(1,7)
-			hour.start = Faker::Time.between(2.days.ago, Time.now, :morning)
+			hour.start = Time.now
 			hour.stop = Faker::Time.between(2.days.ago, Time.now, :night)
 			hour.member_id = Faker::Number.between(1,50)
 			hour.save
