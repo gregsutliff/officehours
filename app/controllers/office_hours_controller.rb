@@ -9,7 +9,7 @@ class OfficeHoursController < ApplicationController
   private
 
 	def now
-		Time.now
+		Time.now.strftime('%H:%M')
 	end
 
 	def day
