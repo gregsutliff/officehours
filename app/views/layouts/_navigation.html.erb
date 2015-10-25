@@ -8,4 +8,9 @@
 		</div>
 		<button type="submit" class="btn btn-default">Submit</button>
 	</form>
+	<div>
+		<% if user_signed_in? %>
+			<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+		<% end %>
+	</div>
 </nav>
