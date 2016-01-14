@@ -4,13 +4,14 @@
     <table class="table ">
       <% @open_hours.each do |h| %>
         <tr class 'hour'>
-        	<td>
+        	<td class="building">
         		<div class="building_thumb"><%= image_tag(h.building.image_path) %></div>
-        		<div><%= h.building_fullname %></div>
+        		<div><%= h.building.abbrev %></div>
         	</td>
 			<td>
 				<ul>
 					<li class="member_name"><%= h.member_fullname %></li>
+					<li><%= h.member.department_name %></li>
 					<li class="door_number">Office Number: <%= h.office.door_number %></li>
 				</ul>
 			</td>

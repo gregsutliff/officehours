@@ -5,13 +5,19 @@ namespace :db do
 	task :populate => :environment do
 		Rake::Task["db:reset"].invoke
 
+		departments = [['Philosophy', 'phil'], ['Biology', 'bio'], ['Mathematics', 'math'], ['Political Science', 'poli-sci']]
+
+		departments.each do |n|
+			Department.create(:name => n[0], :abbrev => n[1])
+		end
+
 		50.times do
 			member = Member.new
 			member.firstname = Faker::Name.first_name
 			member.lastname = Faker::Name.last_name
 			member.uin = Faker::Number.number(9)
 			member.office_id = Faker::Number.between(1,100)
-			member.department_id = Faker::Number.between(1,3)
+			member.department = Department.find(Faker::Number.between(1,4))
 			member.save
 		end
 
@@ -49,10 +55,6 @@ namespace :db do
 			hour.start = '05:00'
 			hour.member_id = Faker::Number.between(1,50)
 			hour.save
-		end
-
-		['Philosophy', 'Biology', 'Math'].each do |n|
-			dept = Department.create(:name => n)
 		end
 	end
 end
