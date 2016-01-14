@@ -48,13 +48,20 @@ namespace :db do
 			office.save
 		end
 
-		500.times do
+		1000.times do
+			times = random_hour(01,22)
 			hour = OfficeHour.new
 			hour.day = Faker::Number.between(0,7)
-			hour.stop = '17:00'
-			hour.start = '05:00'
+			hour.stop = times[1]
+			hour.start = times[0]
 			hour.member_id = Faker::Number.between(1,50)
 			hour.save
 		end
 	end
+end
+
+def random_hour(from, to)
+	start = (Date.today + rand(from..to).hour + rand(0..60.minutes)).to_datetime
+	stop = (start + 2.hour).to_datetime
+	return [start, stop]
 end
