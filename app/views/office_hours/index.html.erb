@@ -4,22 +4,21 @@
     <table class="table ">
       <% @open_hours.each do |h| %>
         <tr class 'hour'>
-					<td>
-						<ul>
-							<li><%= h.building_fullname %></li>
-							<li><%= h.office.door_number %></li>
-						</ul>
-					</td>
-					<td>
-						<ul>
-							<li><%= h.member_fullname %></li>
-						</ul>
-					</td>
-					<td>
-						<ul>
-							<li><%= h.time_left(Time.now.strftime('%H:%M')) %>min left</li>
-						</ul>
-					</td>
+        	<td>
+        		<div class="building_thumb">Building Image</div>
+        		<div><%= h.building_fullname %></div>
+        	</td>
+			<td>
+				<ul>
+					<li class="member_name"><%= h.member_fullname %></li>
+					<li class="door_number">Office Number: <%= h.office.door_number %></li>
+				</ul>
+			</td>
+			<td>
+				<ul>
+					<li class="timer"><%= h.time_left(Time.now.strftime('%H:%M')) %> min left</li>
+				</ul>
+			</td>
         </tr>
       <% end %>
     </table>
