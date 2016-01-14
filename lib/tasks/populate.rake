@@ -31,9 +31,9 @@ namespace :db do
 
 		500.times do
 			hour = OfficeHour.new
-			hour.day = Faker::Number.between(1,7)
-			hour.start = Time.now
-			hour.stop = Faker::Time.between(2.days.ago, Time.now, :night)
+			hour.day = Faker::Number.between(0,7)
+			hour.stop = '17:00'
+			hour.start = '05:00'
 			hour.member_id = Faker::Number.between(1,50)
 			hour.save
 		end
