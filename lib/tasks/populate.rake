@@ -48,7 +48,7 @@ namespace :db do
 			office.save
 		end
 
-		1000.times do
+		2000.times do
 			times = random_hour(01,22)
 			hour = OfficeHour.new
 			hour.day = Faker::Number.between(0,7)

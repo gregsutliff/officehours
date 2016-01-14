@@ -5,7 +5,7 @@ $(document).ready(function(){
       $this.html(event.strftime("%H:%M:%S"));
     });
     $this.on("finish.countdown", function(event){
-      $(this).closest(".entry")
+      $(this).closest(ul)
         .css(".bg-danger")
       $(this).parent()
         .html("Closed!")
