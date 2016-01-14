@@ -3,9 +3,7 @@ $break-small: 320px;
 $break-large: 1200px;
 
 
-ul { 
-	list-style: none;
-}
+
 
 
 tr {
@@ -13,6 +11,9 @@ tr {
 }
 
 .hour {
+	ul { 
+		list-style: none;
+	}
 	.building {
 		width: 100px;
 		height: 100px;
