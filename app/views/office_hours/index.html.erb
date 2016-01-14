@@ -6,9 +6,9 @@
         <tr class 'hour'>
         	<td class="building">
         		<div class="building_thumb"><%= image_tag(h.building.image_path) %></div>
-        		<div><%= h.building.abbrev %></div>
+        		<div class="building_name"><%= h.building.abbrev %></div>
         	</td>
-			<td>
+			<td class="member_info">
 				<ul>
 					<li class="member_name"><%= h.member_fullname %></li>
 					<li><%= h.member.department_name %></li>

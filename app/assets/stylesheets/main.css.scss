@@ -11,20 +11,28 @@ ul {
 
 img {
 	height: auto;
-	width: 100px;
+	width: 130px;
 }
 
 .building_thumb {
 	height: 100px;
-	width: 100px;
+	width: 130px;
 	overflow: hidden;
 }
 
 .building {
-	width: 150px;
+	width: 130px;
 	height: 125px;
 }
 
 tr {
 	height: 100px;
+}
+
+.building_name {
+	text-align: center;
+}
+
+.member_info {
+	max-width: 80px;
 }
