@@ -1,4 +1,5 @@
 class OfficeHour < ActiveRecord::Base
+	searchkick
   validates :day, :start, :stop, :member_id,  presence: true
   belongs_to :member
 	has_one :office, :through => :member
