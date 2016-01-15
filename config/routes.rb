@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  get 'department/index'
-
-  devise_for :users
   root 'office_hours#index'
+  get 'department/index'
+  devise_for :users
   get 'department/curate' => 'department#index', as: :curate
 	get 'department/curate/:member_id' => 'member#edit', as: :curator_edit_member
-	resources :member
+	resources :members, :office_hours
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
