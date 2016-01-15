@@ -2,7 +2,11 @@ class OfficeHoursController < ApplicationController
  
   def index
     redirect_curators
-    @open_hours = OfficeHour.includes(:member, :building, :office, :department).open(day, now).order('stop desc')
+    if params[:building].present?
+      @open_hours = OfficeHour.includes(:building, :member, :office, :department).where('buildings.fullname' => params[:building]).open(day, now).order('stop desc')
+    else 
+      @open_hours = OfficeHour.includes(:member, :building, :office, :department).open(day, now).order('stop desc')
+    end
   end
 
 

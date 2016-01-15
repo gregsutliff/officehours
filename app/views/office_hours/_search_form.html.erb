@@ -1,7 +1,6 @@
-<form class="form-inline" role="search">
-	<div class="form-group searchbox">
-		<label for="searchfield" class="sr-only">Search</label>
-		<input type="text" id="searchfield" class="form-control" placeholder="Building?">
-	</div>
-	<button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<%= form_tag 'office_hours', method: 'GET', html: {class: 'form-inline'} do |f| %>
+	<%= text_field_tag :building, 'Building'%>
+	<%= submit_tag "Search", class: "btn btn-primary"%>
+<% end %>
+
+
