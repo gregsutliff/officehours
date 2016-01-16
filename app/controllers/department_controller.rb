@@ -1,16 +1,12 @@
 class DepartmentController < ApplicationController
   def index
-		if current_user.role == 3
-			redirect_to root_path
-			flash[:notice] = "You can't go there"
-		end
-		
+  	redirect_to root_path && flash[:notice] = "You can't go there" if current_user.role == 3
 		department = current_user.department
 		@members = department.members.includes(:office, :building, :department)
 	end
 
 	def autocomplete
-    render json: Department.search(params[:query], limit: 10).map{|department| {name: department.name}}
+    render json: Department.search(params[:query], limit: 10).map { |department| { name: department.name} }
   end
 
 
