@@ -12,9 +12,10 @@ ready = function() {
     var buildings = new Bloodhound({
       remote: {url: "/building/autocomplete?query=%QUERY", wildcard: '%QUERY'},
       datumTokenizer: function(d) { 
-              return Bloodhound.tokenizers.whitespace(d.name); },
+              return Bloodhound.tokenizers.whitespace(d.fullname, d.abbrev); },
       queryTokenizer: Bloodhound.tokenizers.whitespace
 	});
+
 	var departments = new Bloodhound({
 		remote: {url: "/department/autocomplete?query=%QUERY", wildcard: '%QUERY'},
 		datumTokenizer: function(d) { 

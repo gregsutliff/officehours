@@ -1,5 +1,5 @@
 class Building < ActiveRecord::Base
-	searchkick text_middle: [:name], autocomplete: ['fullname']
+	searchkick text_middle: [:fullname, :abbrev], autocomplete: ['fullname', 'abbrev']
 
   validates :fullname, :abbrev, :presence => true
   has_many :members, :through => :offices
