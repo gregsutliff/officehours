@@ -4,6 +4,7 @@ class DepartmentController < ApplicationController
 			redirect_to root_path
 			flash[:notice] = "You can't go there"
 		end
+		
 		department = current_user.department
 		@members = department.members.includes(:office, :building, :department)
 	end
