@@ -1,5 +1,7 @@
 class OfficeHour < ActiveRecord::Base
+
 	searchkick text_middle: [:building_fullname, :building_abbrev]
+
 	def search_data
 		attributes.merge(
 				building_fullname: building_fullname,
