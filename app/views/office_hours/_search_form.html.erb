@@ -1,7 +1,7 @@
 
 <div id="typeahead">
 <%= form_tag office_hours_path, method: 'GET', class: 'form-inline' do %>
-	<%= text_field_tag :query, params[:query], class: 'typeahead' %>
+	<%= text_field_tag :query, params[:query], class: 'typeahead form-control' %>
 	<%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
 </div>
