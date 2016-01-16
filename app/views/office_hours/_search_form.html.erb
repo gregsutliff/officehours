@@ -1,8 +1,46 @@
 
-
+<div id="typeahead">
 <%= form_tag office_hours_path, method: 'GET', html: {class: 'form-inline'} do %>
-	<%= text_field_tag :query, params[:query] %>
+	<%= text_field_tag :query, params[:query], class: 'typeahead' %>
 	<%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
+</div>
+
+<script>
+var substringMatcher = function(strs) {
+  return function findMatches(q, cb) {
+    var matches, substringRegex;
+
+    // an array that will be populated with substring matches
+    matches = [];
+
+    // regex used to determine if a string contains the substring `q`
+    substrRegex = new RegExp(q, 'i');
+
+    // iterate through the pool of strings and for any string that
+    // contains the substring `q`, add it to the `matches` array
+    $.each(strs, function(i, str) {
+      if (substrRegex.test(str)) {
+        matches.push(str);
+      }
+    });
+
+    cb(matches);
+  };
+};
+
+var buildings = ['University Hall', 'Behavioral Sciences Building', 'Student Services Building','Student Center East', 'Lincoln Hall', 'Burnham Hall'];
+
+
+$('#typeahead .typeahead').typeahead({
+  hint: true,
+  highlight: true,
+  minLength: 1
+},
+{
+  name: 'buildings',
+  source: substringMatcher(buildings)
+});
+</script>
 
 

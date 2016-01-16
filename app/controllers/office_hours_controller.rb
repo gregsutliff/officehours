@@ -1,5 +1,6 @@
 class OfficeHoursController < ApplicationController
- 
+
+
   def index
 
     redirect_curators
