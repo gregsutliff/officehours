@@ -1,6 +1,5 @@
 class OfficeHoursController < ApplicationController
   def index
-
     redirect_curators
     time = Time.now.strftime('2000-01-01T%H:%M:%S')
     if params[:query].present?
@@ -9,9 +8,11 @@ class OfficeHoursController < ApplicationController
         stop: { gt: time },
         day: day
       },
-        order: { stop: :desc }
+      order: { stop: :desc }
     else
-      @open_hours = OfficeHour.includes(:member, :building, :office, :department).open(day, now).order('stop desc')
+      @open_hours = OfficeHour
+                    .includes(:member, :building, :office, :department)
+                    .open(day, now).order('stop desc')
     end
   end
 

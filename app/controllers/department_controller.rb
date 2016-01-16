@@ -6,7 +6,7 @@ class DepartmentController < ApplicationController
 	end
 
 	def autocomplete
-    render json: Department.search(params[:query], limit: 10).map { |department| { name: department.name} }
+    render json: Department.search(params[:query], limit: 10).map { |department| { name: department.name } }
   end
 
 
