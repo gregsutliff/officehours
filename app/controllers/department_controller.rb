@@ -8,6 +8,10 @@ class DepartmentController < ApplicationController
 		@members = department.members.includes(:office, :building, :department)
 	end
 
+	def autocomplete
+    render json: Department.search(params[:query], limit: 10).map{|department| {name: department.name}}
+  end
+
 
 	private
 
