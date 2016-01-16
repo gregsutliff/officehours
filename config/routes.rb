@@ -1,10 +1,21 @@
 Rails.application.routes.draw do
   root 'office_hours#index'
-  get 'department/index'
   devise_for :users
   get 'department/curate' => 'department#index', as: :curate
 	get 'department/curate/:member_id' => 'member#edit', as: :curator_edit_member
 	resources :members
+
+  resources :building do
+    collection do
+      get :autocomplete
+    end
+  end
+
+  resources :department do
+    collection do
+      get :autocomplete
+    end
+  end
 
   resources :office_hours do
     collection do

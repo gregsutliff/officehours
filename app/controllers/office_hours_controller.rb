@@ -21,15 +21,6 @@ class OfficeHoursController < ApplicationController
     end
   end
 
-  def autocomplete
-    # respond_to do |format|
-    #   format.json
-    #   format.html
-    #   format.js
-    # end
-
-    render json: OfficeHour.search(params[:query]).map{|hour| {name: hour.building_fullname, value: hour.building_fullname}}
-  end
 
   private
 
