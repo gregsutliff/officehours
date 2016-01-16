@@ -5,9 +5,14 @@
 	<div class="col-xs-5"></div>
 </div>
 
+
+
 <div class='row'>
   <div class='col-xs-11'>
 		<h4>Open Office Hours:</h4>
+		<% if @open_hours.empty? %>
+			<div>Sorry, there aren't any open hours at this time.</div>
+		<% end %>
     <table class="table ">
       <% @open_hours.each do |h| %>
         <tr class='hour'>
