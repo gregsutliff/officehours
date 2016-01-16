@@ -28,7 +28,7 @@ class OfficeHoursController < ApplicationController
     #   format.js
     # end
 
-    render json: OfficeHour.search(params[:query], match: :word_start, autocomplete: true, limit: 10).map{|hour| {name: hour.building_fullname, value: hour.building_fullname}}
+    render json: OfficeHour.search(params[:query]).map{|hour| {name: hour.building_fullname, value: hour.building_fullname}}
   end
 
   private

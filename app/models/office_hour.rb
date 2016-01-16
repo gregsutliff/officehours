@@ -1,5 +1,5 @@
 class OfficeHour < ActiveRecord::Base
-	searchkick word_start: [:building_fullname], autocomplete: ['building_fullname']
+	searchkick text_middle: [:building_fullname], autocomplete: ['building_fullname']
 	def search_data
 		attributes.merge(
 				building_fullname: building_fullname,
