@@ -2,7 +2,9 @@ class OfficeHour < ActiveRecord::Base
 	searchkick
 	def search_data
 		attributes.merge(
-				building_fullname: building_fullname
+				building_fullname: building_fullname,
+				member_fullname: member_fullname,
+				department_name: department_name,
 			)
 	end
   validates :day, :start, :stop, :member_id,  presence: true
