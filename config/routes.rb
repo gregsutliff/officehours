@@ -4,7 +4,13 @@ Rails.application.routes.draw do
   devise_for :users
   get 'department/curate' => 'department#index', as: :curate
 	get 'department/curate/:member_id' => 'member#edit', as: :curator_edit_member
-	resources :members, :office_hours
+	resources :members
+
+  resources :office_hours do
+    collection do
+      get :autocomplete
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
