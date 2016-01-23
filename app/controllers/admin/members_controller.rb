@@ -21,7 +21,7 @@ end
 private
 
 def admin_params
-	params.require(:member).permit(:firstname, :lastname, :door_number)
+	params.require(:member).permit(:firstname, :lastname, :building_id, :door_number)
 end
 
 def redirect_non_admin
