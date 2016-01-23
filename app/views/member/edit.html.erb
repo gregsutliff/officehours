@@ -1,8 +1,0 @@
-<h2>Edit Member</h2>
-
-<div>Save</div>
-<div><%= @current_member.fullname %></div>
-<%= form_for @current_member do |f|  %>
-	<%= f.collection_select  :building, Building.all, :id, :fullname %>
-	<%= f.submit %>
-<% end %>

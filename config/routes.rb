@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   end
 
   resources :building, :office_hours, :department, concerns: :autocompleteable
-  resources :members
 
   namespace :admin do
     resources :members, :departments, :office_hours

@@ -1,0 +1,9 @@
+<h2>Edit Member</h2>
+
+<div><%= @current_member.firstname %></div>
+<%= form_for [:admin, @current_member] do |f|  %>
+  <%= f.text_field :firstname %>
+  <%= f.text_field :lastname %>
+	<%= f.collection_select  :building, Building.all, :id, :fullname %>
+	<%= f.submit %>
+<% end %>

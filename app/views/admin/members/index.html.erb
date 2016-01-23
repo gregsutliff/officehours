@@ -8,12 +8,13 @@
   <div class='col-xs-12'>
     <table class='table table-bordered'>
       <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Department</th>
-        <th>Office</th>
+        <th><%= link_to 'First Name', sort: 'firstname' %></th>
+        <th><%= link_to 'Last Name', sort: 'lastname' %></th>
+        <th><%= link_to 'Department', sort: 'department' %></th>
+        <th><%= link_to 'Office', sort: 'office' %></th>
         <th>Email</th>
         <th>Hours</th>
+        <th>Action</th>
       </tr>
     <% @members.each do |m| %>
       <tr>
@@ -23,6 +24,7 @@
         <td><%= m.building.abbrev + " " + m.office.door_number %></td>
         <td>Email</td>
         <td>Hours</td>
+        <td><%= link_to 'Edit', edit_admin_member_path(m)%> <%= link_to 'Delete', admin_member_path(m), :method => :delete %></td>
       </tr>
     <% end %>
     </table>
