@@ -6,6 +6,9 @@ class Admin::MembersController < ApplicationController
   def edit
     @current_member = Member.find(params[:id])
   end
+  def new
+  	@new_member = Member.new
+  end
   def update
     flash[:notice] = 'Member was successfully updated.'
     member = Member.find(params[:id])
