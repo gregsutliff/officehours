@@ -30,7 +30,7 @@ class OfficeHoursController < ApplicationController
       order: { stop: :desc }
     else
       @open_hours = OfficeHour
-                    .includes(:member, :building, :office, :department)
+                    .includes(:member, :building, :department)
                     .open(day, now).order('stop desc')
     end
   end

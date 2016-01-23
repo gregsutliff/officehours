@@ -2,7 +2,7 @@ class DepartmentController < ApplicationController
   def index
     redirect_to root_path && flash[:notice] = "You can't go there" if current_user.role == 3
     department = current_user.department
-    @members = department.members.includes(:office, :building, :department)
+    @members = department.members.includes(:building, :department)
   end
 
   def autocomplete

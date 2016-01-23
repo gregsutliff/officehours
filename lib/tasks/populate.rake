@@ -11,16 +11,6 @@ namespace :db do
       Department.create(name: n[0], abbrev: n[1])
     end
 
-    50.times do
-      member = Member.new
-      member.firstname = Faker::Name.first_name
-      member.lastname = Faker::Name.last_name
-      member.uin = Faker::Number.number(9)
-      member.office_id = Faker::Number.between(1,100)
-      member.department = Department.find(Faker::Number.between(1,4))
-      member.save
-    end
-
     Building.create(fullname: 'University Hall', abbrev: 'UH', image_path: 'avatars/uh.jpg')
     Building.create(fullname: 'Behavioral Sciences Building', abbrev: 'BSB', image_path: 'avatars/bsb.jpg')
     Building.create(fullname: 'Burnham Hall', abbrev: 'Burnham', image_path: 'avatars/burnham.jpg')
@@ -39,16 +29,23 @@ namespace :db do
     Building.create(fullname: 'Student Services Building', abbrev: 'SSB', image_path: 'avatars/ssb.jpg')
     Building.create(fullname: 'Stevenson Hall', abbrev: 'Stevenson', image_path: 'avatars/stevenson.jpg')
 
+    50.times do
+      member = Member.new
+      member.firstname = Faker::Name.first_name
+      member.lastname = Faker::Name.last_name
+      member.uin = Faker::Number.number(9)
+      member.door_number = Faker::Number.between(1,100)
+      member.department = Department.find(Faker::Number.between(1,4))
+      member.building = Building.find(Faker::Number.between(1,17))
+      member.save
+    end
+
+
+
     User.create(email: 'organizer@gmail.com', password: 'password', role: 3, confirmed_at: Time.now)
 
     User.create(email: 'admin@gmail.com', password: 'password', role: 1, confirmed_at: Time.now)
 
-    100.times do
-      office = Office.new
-      office.door_number = Faker::Number.between(1,200)
-      office.building_id = Faker::Number.between(1,17)
-      office.save
-    end
 
     2000.times do
       times = random_hour(01,22)

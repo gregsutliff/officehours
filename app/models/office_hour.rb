@@ -12,8 +12,7 @@ class OfficeHour < ActiveRecord::Base
 
   validates :day, :start, :stop, :member_id, presence: true
   belongs_to :member
-  has_one :office, through: :member
-  has_one :building, through: :office
+  has_one :building, through: :member
   has_one :department, through: :member
 
   scope :open, -> (day, time) { where(day: day).where('? BETWEEN TIME(start) AND TIME(stop)', time) }

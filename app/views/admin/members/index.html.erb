@@ -21,7 +21,7 @@
         <td><%= m.firstname %></td>
         <td><%= m.lastname %></td>
         <td><%= m.department.name %></td>
-        <td><%= m.building.abbrev + " " + m.office.door_number %></td>
+        <td><%= m.building.abbrev + " " + m.door_number %></td>
         <td>Email</td>
         <td>Hours</td>
         <td><%= link_to 'Edit', edit_admin_member_path(m)%> <%= link_to 'Delete', admin_member_path(m), :method => :delete %></td>
