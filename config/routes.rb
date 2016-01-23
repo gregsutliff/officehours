@@ -7,15 +7,19 @@ Rails.application.routes.draw do
   root 'office_hours#index'
   get 'department/curate' => 'department#index', as: :curate
 	get 'department/curate/:member_id' => 'member#edit', as: :curator_edit_member
-	 
+
   concern :autocompleteable do
-    collection do 
+    collection do
       get :autocomplete
     end
   end
 
-  resources :building, :office_hours, :department, concerns: :autocompleteable 
+  resources :building, :office_hours, :department, concerns: :autocompleteable
   resources :members
+
+  namespace :admin do
+    get '', to: 'dashboard#index', as: '/'
+  end
 
 
 
