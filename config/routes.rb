@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  namespace :admin do
-  get 'dashboard/index'
-  end
+
 
   devise_for :users
   root 'office_hours#index'
@@ -18,7 +16,7 @@ Rails.application.routes.draw do
   resources :members
 
   namespace :admin do
-    get '', to: 'dashboard#index', as: '/'
+    resources :members, :departments, :office_hours
   end
 
 

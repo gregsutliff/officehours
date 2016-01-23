@@ -3,15 +3,15 @@ $break-small: 320px;
 $break-large: 1200px;
 
 
-tr {
-	height: 100px;
-}
 
 #logout {
 	line-height: 45px;
 }
 
 .hour {
+	tr {
+		height: 100px;
+	}
 	ul {
 		list-style: none;
 	}
