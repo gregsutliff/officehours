@@ -2,7 +2,7 @@ class Admin::MembersController < ApplicationController
   helper_method :sort_column, :sort_direction
   def index
     redirect_non_admin
-    @members = Member.includes(:department, :building, :office_hours).order(sort_column + ' ' + sort_direction).paginate(per_page: 25, page: params[:page])
+    @members = Member.includes(:department, :building, :office_hours).search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(per_page: 25, page: params[:page])
   end
 
   def edit

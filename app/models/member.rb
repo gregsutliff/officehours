@@ -11,6 +11,14 @@ class Member < ActiveRecord::Base
   delegate :uic_email, to: :email, allow_nil: true
   delegate :non_uic_email, to: :email, allow_nil: true
 
+  def self.search(search)
+    if search
+      where(lastname: search)
+    else
+      all
+    end
+  end
+
   def fullname
     firstname + ' ' + lastname
   end
