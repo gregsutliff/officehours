@@ -13,35 +13,7 @@
     <%= link_to 'Add New Building', new_admin_building_path %>
   </div>
 <div class='row'>
-
   <div class='col-xs-12'>
-    <table class='table table-bordered'>
-      <tr>
-        <th><%= link_to 'First Name', sort: 'firstname' %></th>
-        <th><%= link_to 'Last Name', sort: 'lastname' %></th>
-        <th><%= link_to 'Department', sort: 'department' %></th>
-        <th><%= link_to 'Office', sort: 'office' %></th>
-        <th>Email</th>
-        <th>Office Hours</th>
-        <th>Action</th>
-      </tr>
-      <% @members.each do |m| %>
-      <tr class='member_row'>
-        <td><%= m.firstname %></td>
-        <td><%= m.lastname %></td>
-        <td><%= m.department.name %></td>
-        <td><%= m.building.abbrev + " " + m.door_number %></td>
-        <td>Email</td>
-        <td>
-          <ul>
-            <% m.office_hours.each do |h| %>
-              <li><%= Date::DAYNAMES[h.day]%>: <%= h.start.strftime('%l:%M') %>-<%= h.stop.strftime('%l:%M%P') %></li>
-            <% end %>
-          </ul>
-        </td>
-        <td><%= link_to 'Edit', edit_admin_member_path(m)%> <%= link_to 'Delete', admin_member_path(m), :method => :delete %></td>
-      </tr>
-    <% end %>
-    </table>
+    <%= render 'member_table' %>
   </div>
 </div>
