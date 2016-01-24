@@ -51,7 +51,7 @@ namespace :db do
     members.each do |m|
       2.times do
         times = random_hour(01,22)
-        m.office_hours << OfficeHour.create(day: Faker::Number.between(1,5), start: times[0], stop: times[1])
+        m.office_hours << OfficeHour.create(day: Faker::Number.between(0,6), start: times[0], stop: times[1])
         m.save
       end
     end

@@ -1,5 +1,5 @@
 class Member < ActiveRecord::Base
-  validates :firstname, :lastname, :uin, presence: true
+  validates :firstname, :lastname, presence: true
   validates :uin, uniqueness: true
   belongs_to :department
   belongs_to :building

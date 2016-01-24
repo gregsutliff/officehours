@@ -13,7 +13,9 @@ class Admin::MembersController < ApplicationController
   end
 
   def create
-    Member.create(admin_params)
+    @member = Member.new
+    @member.update(admin_params)
+    @member.save
     redirect_to admin_members_path
   end
 
