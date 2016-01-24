@@ -1,7 +1,8 @@
 class Admin::MembersController < ApplicationController
+  helper_method :sort_column, :sort_direction
   def index
     redirect_non_admin
-    @members = Member.includes(:department, :building, :office_hours).order(sort_name + ' ' + sort_direction)
+    @members = Member.includes(:department, :building, :office_hours).order(sort_column + ' ' + sort_direction)
   end
 
   def edit
@@ -43,10 +44,11 @@ def redirect_non_admin
   redirect_to root_path unless current_user.role == 1
 end
 
-def sort_name
+def sort_column
+  %w[firstname lastname buildings.fullname departments.name].include?(params[:sort]) ? params[:sort] : 'departments.name'
   params[:sort] || 'lastname'
 end
 
 def sort_direction
-  params[:direction] || 'asc'
+  %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
 end
