@@ -18,6 +18,7 @@ gem 'devise'
 # Use jquery as the JavaScript library
 gem 'searchkick'
 gem 'jquery-rails'
+gem 'jquery-turbolinks'
 gem 'bootstrap-sass'
 gem 'will_paginate'
 gem 'thin'
