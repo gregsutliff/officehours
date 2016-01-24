@@ -18,12 +18,10 @@ gem 'devise'
 # Use jquery as the JavaScript library
 gem 'searchkick'
 gem 'jquery-rails'
-gem 'jquery-turbolinks'
 gem 'bootstrap-sass'
 gem 'will_paginate'
 gem 'thin'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
