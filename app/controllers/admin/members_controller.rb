@@ -2,7 +2,7 @@ class Admin::MembersController < ApplicationController
   helper_method :sort_column, :sort_direction
   def index
     redirect_non_admin
-    @members = Member.includes(:department, :building, :office_hours).searching(params[:search])
+    @members = Member.includes(:department, :building, :office_hours).searching(params[:search], sort_column, sort_direction)
   end
 
   def edit
@@ -45,8 +45,7 @@ def redirect_non_admin
 end
 
 def sort_column
-  %w[firstname lastname buildings.fullname departments.name].include?(params[:sort]) ? params[:sort] : 'departments.name'
-  params[:sort] || 'lastname'
+  %w[firstname lastname building_fullname department_name].include?(params[:sort]) ? params[:sort] : 'department_name'
 end
 
 def sort_direction

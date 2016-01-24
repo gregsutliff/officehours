@@ -20,9 +20,9 @@ class Member < ActiveRecord::Base
   delegate :uic_email, to: :email, allow_nil: true
   delegate :non_uic_email, to: :email, allow_nil: true
 
-  def self.searching(query)
+  def self.searching(query, sort_column, sort_direction)
     if search
-      search(query)
+      search query, order: { sort_column => sort_direction }
     else
       all
     end
