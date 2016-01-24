@@ -11,22 +11,15 @@
   <div class='col-xs-12'>
     <table class='table table-bordered'>
       <tr>
-        <th rowspan='2'><%= link_to 'First Name', sort: 'firstname' %></th>
-        <th rowspan='2'><%= link_to 'Last Name', sort: 'lastname' %></th>
-        <th rowspan='2'><%= link_to 'Department', sort: 'department' %></th>
-        <th rowspan='2'><%= link_to 'Office', sort: 'office' %></th>
-        <th rowspan='2'>Email</th>
-        <th colspan = '5'>Office Hours</th>
-        <th rowspan = '2'>Action</th>
+        <th><%= link_to 'First Name', sort: 'firstname' %></th>
+        <th><%= link_to 'Last Name', sort: 'lastname' %></th>
+        <th><%= link_to 'Department', sort: 'department' %></th>
+        <th><%= link_to 'Office', sort: 'office' %></th>
+        <th>Email</th>
+        <th>Office Hours</th>
+        <th>Action</th>
       </tr>
-      <tr>
-        <th>Monday</th>
-        <th>Tuesday</th>
-        <th>Wednesday</th>
-        <th>Thursday</th>
-        <th>Friday</th>
-      </tr>
-    <% @members.each do |m| %>
+      <% @members.each do |m| %>
       <tr class='member_row'>
         <td><%= m.firstname %></td>
         <td><%= m.lastname %></td>
@@ -35,36 +28,8 @@
         <td>Email</td>
         <td>
           <ul>
-            <% m.hours_on_day(1).each do |h| %>
-              <li><%= h.start.strftime('%l:%M')%>-<%= h.stop.strftime('%l:%M%P') %></li>
-            <% end %>
-          </ul>
-        </td>
-        <td>
-          <ul>
-            <% m.hours_on_day(2).each do |h| %>
-              <li><%= h.start.strftime('%l:%M')%>-<%= h.stop.strftime('%l:%M%P') %></li>
-            <% end %>
-          </ul>
-        </td>
-        <td>
-          <ul>
-            <% m.hours_on_day(3).each do |h| %>
-              <li><%= h.start.strftime('%l:%M')%>-<%= h.stop.strftime('%l:%M%P') %></li>
-            <% end %>
-          </ul>
-        </td>
-        <td>
-          <ul>
-            <% m.hours_on_day(4).each do |h| %>
-              <li><%= h.start.strftime('%l:%M')%>-<%= h.stop.strftime('%l:%M%P') %></li>
-            <% end %>
-          </ul>
-        </td>
-        <td>
-          <ul>
-            <% m.hours_on_day(5).each do |h| %>
-              <li><%= h.start.strftime('%l:%M')%>-<%= h.stop.strftime('%l:%M%P') %></li>
+            <% m.office_hours.each do |h| %>
+              <li><%= Date::DAYNAMES[h.day]%>: <%= h.start.strftime('%l:%M') %>-<%= h.stop.strftime('%l:%M%P') %></li>
             <% end %>
           </ul>
         </td>

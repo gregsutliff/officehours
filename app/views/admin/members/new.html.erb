@@ -1,1 +1,8 @@
-<div>This is where you make a new member!</div>
+<%= form_for [:admin, @member] do |m| %>
+  <%= m.text_field :firstname, placeholder: 'First Name' %>
+  <%= m.text_field :lastname, placeholder: 'Last Name' %>
+  <%= m.collection_select :department_id, Department.all, :id, :name %>
+  <%= m.collection_select :building_id, Building.all, :id, :fullname %>
+  <%= m.text_field :door_number, placeholder: 'Door Number' %>
+  <%= m.submit 'Submit' %>
+<% end %>

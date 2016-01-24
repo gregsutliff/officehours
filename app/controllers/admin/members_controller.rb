@@ -1,7 +1,7 @@
 class Admin::MembersController < ApplicationController
   def index
-  	redirect_non_admin
-    @members = Member.includes(:department, :building).order(sort_params || 'departments.name')
+    redirect_non_admin
+    @members = Member.includes(:department, :building, :office_hours).order(sort_params || 'departments.name')
   end
 
   def edit
@@ -9,7 +9,12 @@ class Admin::MembersController < ApplicationController
   end
 
   def new
-  	@new_member = Member.new
+    @member = Member.new
+  end
+
+  def create
+    Member.create(admin_params)
+    redirect_to admin_members_path
   end
 
   def update
@@ -20,8 +25,8 @@ class Admin::MembersController < ApplicationController
   end
 
   def destroy
-  	Member.delete(params[:id])
-  	redirect_to admin_members_path
+    Member.delete(params[:id])
+    redirect_to admin_members_path
   end
 
 end
@@ -29,7 +34,7 @@ end
 private
 
 def admin_params
-	params.require(:member).permit(:firstname, :lastname, :building_id, :door_number)
+  params.require(:member).permit(:firstname, :lastname, :building_id, :door_number, :department_id)
 end
 
 def redirect_non_admin
@@ -37,16 +42,16 @@ def redirect_non_admin
 end
 
 def sort_params
-	case params[:sort]
-	when 'firstname'
-		return 'firstname'
-	when 'lastname'
-		return 'lastname'
-	when 'department'
-		return 'departments.name'
-	when 'office'
-		return 'buildings.fullname'
-	else
-		return nil
-	end
+  case params[:sort]
+  when 'firstname'
+    return 'firstname'
+  when 'lastname'
+    return 'lastname'
+  when 'department'
+    return 'departments.name'
+  when 'office'
+    return 'buildings.fullname'
+  else
+    return nil
+  end
 end

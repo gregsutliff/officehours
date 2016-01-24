@@ -16,7 +16,7 @@ class Member < ActiveRecord::Base
   end
 
   def hours_on_day(day)
-    return office_hours.where(day: day)
+    return self.office_hours.where(day: day)
   end
 
 end
