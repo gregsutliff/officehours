@@ -66,6 +66,17 @@ $break-large: 1200px;
 	}
 
 	.member_info {
+		.countdown {
+			text-align: left;
+			font-weight: lighter;
+			color: #8899a6;
+			font-size: 13px;
+			padding-left: 8px;
+			}
+
+		ul {
+			padding-left: 2px;
+			}
 
 		.member_name {
 			font-weight: bold;
@@ -85,12 +96,6 @@ $break-large: 1200px;
 		@media (min-width: $break-large){
 			font-size: 15px;
 			min-width: 300px;
-		}
-	}
-	.timer {
-			text-align: center;
-		.countdown {
-			text-align: center;
 		}
 	}
 }

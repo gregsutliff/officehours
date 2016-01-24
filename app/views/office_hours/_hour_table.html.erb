@@ -11,19 +11,15 @@
         		<div class="building_thumb"><%= image_tag(h.building.image_path) %></div>
         		<div class="building_name"><%= h.building.fullname %></div>
         	</td>
-			<td class="member_info">
-				<ul>
-					<li class="member_name"><%= h.member_fullname %></li>
-					<li><%= h.member.department_name %></li>
-					<li class="door_number">Office <%= h.member.door_number %></li>
-				</ul>
-			</td>
-			<td class="timer">
-				<ul>
-					<li>Time Left</li>
-					<li class="countdown" data-countdown="<%= "#{Time.now.strftime('%m/%d/%Y')} #{h.stop.strftime('%H:%M:%S')}" %>"></li>
-				</ul>
-			</td>
+			    <td class="member_info">
+				    <ul>
+					    <li class="member_name"><%= h.member_fullname %>
+                <span class='countdown' data-countdown="<%= "#{Time.now.strftime('%m/%d/%Y')} #{h.stop.strftime('%H:%M:%S')}" %>"</span>
+              </li>
+					    <li><%= h.member.department_name %></li>
+					    <li class="door_number">Office <%= h.member.door_number %></li>
+				    </ul>
+			    </td>
         </tr>
       <% end %>
     </table>
