@@ -1,4 +1,13 @@
 class Member < ActiveRecord::Base
+  searchkick
+
+  def search_data
+    attributes.merge(
+      department_name: department_name,
+      building_fullname: building_fullname
+      )
+
+  end
   validates :firstname, :lastname, presence: true
   validates :uin, uniqueness: true
   belongs_to :department
@@ -11,9 +20,9 @@ class Member < ActiveRecord::Base
   delegate :uic_email, to: :email, allow_nil: true
   delegate :non_uic_email, to: :email, allow_nil: true
 
-  def self.search(search)
+  def self.searching(query)
     if search
-      where(lastname: search)
+      search(query)
     else
       all
     end
