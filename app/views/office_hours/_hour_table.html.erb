@@ -4,7 +4,7 @@
 		<% if @open_hours.empty? %>
 			<div>Sorry, there aren't any open hours at this time.</div>
 		<% end %>
-    <table class="table ">
+    <table class="table hourtable">
       <% @open_hours.each do |h| %>
         <tr class='hour'>
         	<td class="building">
@@ -14,7 +14,7 @@
 			    <td class="member_info">
 				    <ul>
 					    <li class="member_name"><%= h.member_fullname %>
-                <span class='countdown' data-countdown="<%= "#{Time.now.strftime('%m/%d/%Y')} #{h.stop.strftime('%H:%M:%S')}" %>"</span>
+                <span class='countdown' data-countdown="<%= "#{Time.now.strftime('%m/%d/%Y')} #{h.stop.strftime('%H:%M:%S')}" %>"></span>
               </li>
 					    <li><%= h.member.department_name %></li>
 					    <li class="door_number">Office <%= h.member.door_number %></li>

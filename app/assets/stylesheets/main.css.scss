@@ -8,7 +8,16 @@ $break-large: 1200px;
 	line-height: 45px;
 }
 
+body {
+	background-color: #f5f8fa;
+}
+
+
 /* Search Boxes */
+.navbar {
+	border-bottom: 1px solid #e1e8ed;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.05)
+}
 
 .search_button {
 	border: 0;
@@ -31,7 +40,37 @@ $break-large: 1200px;
 
 /* Office Hours Index */
 
+.hourtable {
+	border-collapse: separate;
+	border-spacing: 0;
+
+	tr:first-child td:first-child {
+		border-top-left-radius: 10px;
+	}
+
+	tr:first-child td:last-child {
+		border-top-right-radius: 10px;
+	}
+
+	tr:last-child td:last-child {
+		border-bottom-right-radius: 10px;
+	}
+
+	tr:last-child td:first-child {
+		border-bottom-left-radius: 10px;
+	}
+}
+
 .hour {
+	background-color: white;
+	border-bottom: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+
+	td {
+		border: none;
+	}
+
 	tr {
 		height: 100px;
 	}
