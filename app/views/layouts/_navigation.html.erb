@@ -1,10 +1,13 @@
 <nav class="navbar navbar-default row">
-	<div class="col-xs-10 navbar-header">
+	<div class="col-xs-8 navbar-header">
 		<span class="navbar-brand"><%= link_to 'Office Hours', root_path %></span>
 	</div>
-	<div class="col-xs-2" id="logout">
+	<div class="col-xs-4" id="logout">
 		<% if user_signed_in? %>
 			<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
 		<% end %>
+    <% if current_user.role == 1 %>
+      <%= link_to('Admin', admin_members_path) %>
+    <% end %>
 	</div>
 </nav>
