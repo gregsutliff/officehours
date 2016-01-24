@@ -10,10 +10,22 @@ $break-large: 1200px;
 
 /* Search Boxes */
 
+.search_button {
+	border: 0;
+	background: none;
+
+}
 .search_box {
 	border-radius: 10px;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
+}
+.form-inline .form-control {
+	width: auto;
+	display: inline-block;
+}
+.form-inline .form-group {
+	display: inline-block;
 }
 
 

@@ -1,8 +1,8 @@
 <div id="typeahead">
-<%= form_tag office_hours_path, method: 'GET', class: 'form-inline' do %>
-	<%= text_field_tag :query, params[:query], class: 'typeahead form-control search_box', placeholder: 'Search Office Hours', autocomplete: 'off' %>
-  <button type='submit' class='btn btn-primary'>
-    <span class='glyphicon glyphicon-search'></span>
-  </button>
-<% end %>
+  <%= form_tag office_hours_path, method: 'GET', class: 'form-inline' do %>
+  	<%= text_field_tag :query, params[:query], class: 'typeahead form-control search_box', placeholder: 'Search Office Hours', autocomplete: 'off' %>
+    <button type='submit' class='btn btn-primary'>
+      <span class='glyphicon glyphicon-search'></span>
+    </button>
+  <% end %>
 </div>
