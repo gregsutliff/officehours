@@ -37,6 +37,7 @@ namespace :db do
       member.door_number = Faker::Number.between(1,100)
       member.department = Department.find(Faker::Number.between(1,4))
       member.building = Building.find(Faker::Number.between(1,17))
+      member.email = Faker::Internet.email
       member.save
     end
 

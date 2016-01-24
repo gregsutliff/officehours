@@ -24,7 +24,7 @@
     <td><%= m.lastname %></td>
     <td><%= m.department.name %></td>
     <td><%= m.building.abbrev + " " + m.door_number %></td>
-    <td>Email</td>
+    <td><%= m.email %></td>
     <td>
       <ul>
         <% m.office_hours.each do |h| %>

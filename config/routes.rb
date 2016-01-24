@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   resources :building, :office_hours, :department, concerns: :autocompleteable
 
   namespace :admin do
-    resources :members, :departments, :office_hours, :buildings
+    resources :members do
+      collection  { post :import }
+    end
+
+    resources :departments, :office_hours, :buildings
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
