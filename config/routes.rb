@@ -1,10 +1,34 @@
 Rails.application.routes.draw do
+  namespace :admin do
+  get 'buildings/index'
+  end
 
+  namespace :admin do
+  get 'buildings/show'
+  end
+
+  namespace :admin do
+  get 'buildings/new'
+  end
+
+  namespace :admin do
+  get 'buildings/create'
+  end
+
+  namespace :admin do
+  get 'buildings/edit'
+  end
+
+  namespace :admin do
+  get 'buildings/update'
+  end
+
+  namespace :admin do
+  get 'buildings/destroy'
+  end
 
   devise_for :users
   root 'office_hours#index'
-  get 'department/curate' => 'department#index', as: :curate
-	get 'department/curate/:member_id' => 'member#edit', as: :curator_edit_member
 
   concern :autocompleteable do
     collection do
@@ -15,12 +39,8 @@ Rails.application.routes.draw do
   resources :building, :office_hours, :department, concerns: :autocompleteable
 
   namespace :admin do
-    resources :members, :departments, :office_hours
+    resources :members, :departments, :office_hours, :buildings
   end
-
-
-
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
