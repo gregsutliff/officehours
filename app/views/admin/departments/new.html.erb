@@ -1,2 +1,5 @@
-<h1>Admin::Departments#new</h1>
-<p>Find me in app/views/admin/departments/new.html.erb</p>
+<%= form_for [:admin, @department] do |d| %>
+  <%= d.text_field :name, placeholder: 'Full Name' %>
+  <%= d.text_field :abbrev, placeholder: 'Abbreviation' %>
+  <%= d.submit 'Create Department' %>
+<% end %>
