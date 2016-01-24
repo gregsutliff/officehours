@@ -1,2 +1,19 @@
-<h1>Admin::Buildings#index</h1>
-<p>Find me in app/views/admin/buildings/index.html.erb</p>
+
+<div> There are <%= @buildings.count %> buildings on campus </div>
+<div> <%= link_to 'Add a Building', new_admin_building_path %></div>
+<table class='table'>
+  <tr>
+    <th>Thumbnail</th>
+    <th>Full Name</th>
+    <th>Abbreviation</th>
+    <th>Actions</th>
+  </tr>
+  <% @buildings.each do |b| %>
+    <tr>
+      <td><%= image_tag(b.image_path) %></td>
+      <td><%= b.fullname %></td>
+      <td><%= b.abbrev %></td>
+      <td><%= link_to('Edit', edit_admin_building_path(b)) %> <%=link_to('Destroy', admin_building_path(b), method: 'Delete') %></td>
+    </tr>
+  <% end %>
+</table>

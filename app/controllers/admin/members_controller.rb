@@ -3,22 +3,27 @@ class Admin::MembersController < ApplicationController
   	redirect_non_admin
     @members = Member.includes(:department, :building).order(sort_params || 'departments.name')
   end
+
   def edit
     @current_member = Member.find(params[:id])
   end
+
   def new
   	@new_member = Member.new
   end
+
   def update
     flash[:notice] = 'Member was successfully updated.'
     member = Member.find(params[:id])
     member.update(admin_params)
     redirect_to admin_members_path
   end
+
   def destroy
   	Member.delete(params[:id])
   	redirect_to admin_members_path
   end
+
 end
 
 private
