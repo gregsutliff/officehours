@@ -2,7 +2,7 @@
 <%= form_tag admin_members_path, method: 'get' do %>
   <%= hidden_field_tag :direction, params[:direction] %>
   <%= hidden_field_tag :sort, params[:sort] %>
-  <%= text_field_tag :search, params[:search] %>
+  <%= text_field_tag :search, params[:search], placeholder: 'Name, Building, or Department' %>
   <%= submit_tag "Search", name: nil %>
 <% end %>
 

@@ -2,7 +2,7 @@ class Admin::MembersController < ApplicationController
   helper_method :sort_column, :sort_direction
   def index
     redirect_non_admin
-    @members = Member.includes(:department, :building, :office_hours).searching(params[:search], sort_column, sort_direction)
+    @members = Member.includes(:department, :building, :office_hours).searching(search_term, sort_column, sort_direction, page)
   end
 
   def edit
@@ -42,6 +42,14 @@ end
 
 def redirect_non_admin
   redirect_to root_path unless current_user.role == 1
+end
+
+def search_term
+  params[:search].blank? ? '*' : params[:search]
+end
+
+def page
+  params[:page] || 1
 end
 
 def sort_column
