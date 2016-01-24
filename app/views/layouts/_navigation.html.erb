@@ -1,8 +1,8 @@
 <nav class="navbar navbar-fixed-top navbar-default row">
-	<div class="col-xs-10 navbar-header">
+	<div class="col-xs-9 navbar-header">
 		<span class="navbar-brand"><%= link_to 'Office Hours', root_path %></span>
 	</div>
-	<div class="col-xs-2" id="logout">
+	<div class="col-xs-3" id="logout">
     <% if current_user.role == 1 %>
       <%= link_to('Admin', admin_members_path) %>
     <% end %>
