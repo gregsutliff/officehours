@@ -14,4 +14,9 @@ class Member < ActiveRecord::Base
   def fullname
     firstname + ' ' + lastname
   end
+
+  def hours_on_day(day)
+    return office_hours.where(day: day)
+  end
+
 end

@@ -29,7 +29,7 @@ namespace :db do
     Building.create(fullname: 'Student Services Building', abbrev: 'SSB', image_path: 'avatars/ssb.jpg')
     Building.create(fullname: 'Stevenson Hall', abbrev: 'Stevenson', image_path: 'avatars/stevenson.jpg')
 
-    50.times do
+    1000.times do
       member = Member.new
       member.firstname = Faker::Name.first_name
       member.lastname = Faker::Name.last_name
@@ -46,15 +46,14 @@ namespace :db do
 
     User.create(email: 'admin@gmail.com', password: 'password', role: 1, confirmed_at: Time.now)
 
+    members = Member.all
 
-    2000.times do
-      times = random_hour(01,22)
-      hour = OfficeHour.new
-      hour.day = Faker::Number.between(0,7)
-      hour.stop = times[1]
-      hour.start = times[0]
-      hour.member_id = Faker::Number.between(1,50)
-      hour.save
+    members.each do |m|
+      2.times do
+        times = random_hour(01,22)
+        m.office_hours << OfficeHour.create(day: Faker::Number.between(1,5), start: times[0], stop: times[1])
+        m.save
+      end
     end
   end
 end
