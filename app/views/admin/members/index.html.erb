@@ -1,18 +1,20 @@
 <div class='row'>
   <div class='col-xs-3'>
-    <%= link_to 'Add New Member', new_admin_member_path %>
+    <%= link_to 'Add/Update Members From CSV', upload_admin_members_path %>
   </div>
   <div class='col-xs-3'>
-    <%= link_to 'Add New Department', new_admin_department_path %>
+    <%= link_to 'New Member', new_admin_member_path %>
   </div>
   <div class='col-xs-3'>
-    <%= link_to 'Add New Building', new_admin_building_path %>
+    <%= link_to 'New Department', new_admin_department_path %>
   </div>
-  <div>
-    <%= form_tag import_admin_members_path, multipart: true do %>
-      <%= file_field_tag :file %>
-      <%= submit_tag "Import CSV" %>
-    <% end %>
+  <div class='col-xs-3'>
+    <%= link_to 'New Building', new_admin_building_path %>
+  </div>
+</div>
+
+
+<br />
 <div class='row'>
   <div class='col-xs-12'>
     <%= render 'member_table' %>

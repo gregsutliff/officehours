@@ -5,6 +5,10 @@ class Admin::MembersController < ApplicationController
     @members = Member.includes(:department, :building, :office_hours).searching(search_term, sort_column, sort_direction, page)
   end
 
+  def upload
+
+  end
+
   def import
     Member.import(params[:file])
     redirect_to admin_members_path, notice: "Members Imported."

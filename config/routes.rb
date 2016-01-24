@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :members do
+      collection { get :upload }
       collection  { post :import }
     end
 
