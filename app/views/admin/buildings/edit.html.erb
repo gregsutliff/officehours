@@ -1,2 +1,8 @@
-<h1>Admin::Buildings#edit</h1>
+<h1>Update The Record for <%= @building.fullname %></h1>
 <p>Find me in app/views/admin/buildings/edit.html.erb</p>
+<%= form_for [:admin, @building] do |b| %>
+  <%= b.text_field :fullname %>
+  <%= b.text_field :abbrev %>
+  <%= b.submit 'Submit' %>
+<% end %>
+
