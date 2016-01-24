@@ -1,9 +1,9 @@
 <table class='table table-bordered'>
   <tr>
-    <th><%= link_to 'First Name', sort: 'firstname' %></th>
-    <th><%= link_to 'Last Name', sort: 'lastname' %></th>
-    <th><%= link_to 'Department', sort: 'department' %></th>
-    <th><%= link_to 'Office', sort: 'office' %></th>
+    <th><%= sortable 'firstname', 'First Name' %></th>
+    <th><%= sortable 'lastname', 'Last Name' %></th>
+    <th><%= sortable 'departments.name', 'Department' %></th>
+    <th><%= sortable 'buildings.fullname', 'Office' %></th>
     <th>Email</th>
     <th>Office Hours</th>
     <th>Action</th>
