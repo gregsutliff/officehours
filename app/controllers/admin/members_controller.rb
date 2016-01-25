@@ -3,6 +3,7 @@ class Admin::MembersController < ApplicationController
   def index
     redirect_non_admin
     @members = Member.includes(:department, :building, :office_hours).searching(search_term, sort_column, sort_direction, page)
+    @member = Member.new
   end
 
   def upload
@@ -20,6 +21,9 @@ class Admin::MembersController < ApplicationController
 
   def new
     @member = Member.new
+    respond_to do |f|
+      f.js
+    end
   end
 
   def create

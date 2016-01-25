@@ -3,7 +3,7 @@
     <%= link_to 'Add/Update Members From CSV', upload_admin_members_path %>
   </div>
   <div class='col-xs-3'>
-    <%= link_to 'New Member', new_admin_member_path %>
+    <%= link_to 'New Member', new_admin_member_path, remote: true %>
   </div>
   <div class='col-xs-3'>
     <%= link_to 'New Department', new_admin_department_path %>
@@ -21,3 +21,4 @@
   </div>
 </div>
 
+<div id="member-modal" class='modal fade'></div>
