@@ -1,4 +1,4 @@
-
-$('#member-modal').html("<%= escape_javascript( render 'new') %>")
-$('#member-modal').modal('show')
-
+$(document).ready(function(){
+  $('#member-modal').html("<%= escape_javascript( render 'new') %>")
+  $('#member-modal').modal('show')
+})
