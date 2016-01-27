@@ -33,18 +33,25 @@ class Admin::MembersController < ApplicationController
     @member = Member.new
     @member.update(admin_params)
     @member.save
-    redirect_to admin_members_path
+    respond_to do |f|
+      f.js
+    end
   end
 
   def update
     flash[:notice] = 'Member was successfully updated.'
-    member = Member.find(params[:id])
-    member.update(admin_params)
-    redirect_to admin_members_path
+    @member = Member.find(params[:id])
+    @member.update(admin_params)
+    respond_to do |f|
+      f.js
+    end
   end
 
   def destroy
     Member.delete(params[:id])
+    respond_to do |f|
+      f.js
+    end
     redirect_to admin_members_path
   end
 
@@ -53,7 +60,7 @@ end
 private
 
 def admin_params
-  params.require(:member).permit(:firstname, :lastname, :building_id, :door_number, :department_id)
+  params.require(:member).permit(:firstname, :lastname, :building_id, :door_number, :department_id, :email)
 end
 
 def redirect_non_admin
