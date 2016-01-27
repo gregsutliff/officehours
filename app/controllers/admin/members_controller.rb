@@ -28,10 +28,7 @@ class Admin::MembersController < ApplicationController
   def create
     @member = Member.new
     @member.update(admin_params)
-    @member.save
     respond_to :js
-
-
   end
 
   def update

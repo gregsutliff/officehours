@@ -5,21 +5,23 @@ class Admin::DepartmentsController < ApplicationController
 
   def new
     @department = Department.new
+    respond_to :html, :js
   end
 
   def create
     @department = Department.create(admin_params)
-    redirect_to admin_departments_path
+    respond_to :html, :js
   end
 
   def edit
     @department = Department.find(params[:id])
+    respond_to :html, :js
   end
 
   def update
     @department = Department.find(params[:id])
     @department.update(admin_params)
-    redirect_to admin_departments_path
+    respond_to :html, :js
   end
 
   def destroy
