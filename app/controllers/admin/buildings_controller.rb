@@ -37,5 +37,5 @@ end
 private
 
 def admin_params
-  params.require(:building).permit(:fullname, :abbrev)
+  params.require(:building).permit(:fullname, :abbrev, :avatar)
 end

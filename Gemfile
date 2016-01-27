@@ -21,6 +21,8 @@ gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'will_paginate'
 gem 'thin'
+gem 'paperclip'
+gem 'remotipart'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
