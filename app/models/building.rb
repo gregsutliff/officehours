@@ -4,5 +4,5 @@ class Building < ActiveRecord::Base
   has_many :members
   has_many :office_hours, through: :members
   has_attached_file :avatar, styles: { thumb: '70x70>'}, default_url: '/images/missing.png'
-  validates_attachment_content_type :avatar, content_type: /\Aimage\.*\Z/
+  validates_attachment :avatar, content_type: { content_type: ['image/jpeg']}
 end
