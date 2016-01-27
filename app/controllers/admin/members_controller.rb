@@ -17,34 +17,28 @@ class Admin::MembersController < ApplicationController
 
   def edit
     @current_member = Member.find(params[:id])
-    respond_to do |f|
-      f.js
-    end
+    respond_to :js
   end
 
   def new
     @member = Member.new
-    respond_to do |f|
-      f.js
-    end
+    respond_to :js
   end
 
   def create
     @member = Member.new
     @member.update(admin_params)
     @member.save
-    respond_to do |f|
-      f.js
-    end
+    respond_to :js
+
+
   end
 
   def update
     flash[:notice] = 'Member was successfully updated.'
     @member = Member.find(params[:id])
     @member.update(admin_params)
-    respond_to do |f|
-      f.js
-    end
+    respond_to :js
   end
 
   def destroy
