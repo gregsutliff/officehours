@@ -17,6 +17,9 @@ class Admin::MembersController < ApplicationController
 
   def edit
     @current_member = Member.find(params[:id])
+    respond_to do |f|
+      f.js
+    end
   end
 
   def new

@@ -32,7 +32,7 @@
         <% end %>
       </ul>
     </td>
-    <td><%= link_to 'Edit', edit_admin_member_path(m)%> <%= link_to 'Delete', admin_member_path(m), :method => :delete %></td>
+    <td><%= link_to 'Edit', edit_admin_member_path(m), remote: true %> <%= link_to 'Delete', admin_member_path(m), :method => :delete %></td>
   </tr>
 <% end %>
 </table>
