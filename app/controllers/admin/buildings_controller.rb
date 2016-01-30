@@ -24,8 +24,8 @@ class Admin::BuildingsController < ApplicationController
 
   def update
     building = Building.find(params[:id])
-    building.update(admin_params)
-    redirect_to admin_buildings_path
+    building.update(building_params)
+    redirect_to admin_buildings_url and return
     respond_to :html, :js
   end
 

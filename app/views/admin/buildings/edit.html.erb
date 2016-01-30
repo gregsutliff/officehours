@@ -1,8 +1,18 @@
 <h1>Update The Record for <%= @building.fullname %></h1>
 <p>Find me in app/views/admin/buildings/edit.html.erb</p>
-<%= form_for [:admin, @building] do |b| %>
-  <%= b.text_field :fullname %>
-  <%= b.text_field :abbrev %>
+<%= form_for [:admin, @building], html: {style:'format:inline;'} do |b| %>
+  <div class='form-group'>
+    <%= b.label :fullname, class: 'control-group' %>
+    <%= b.text_field :fullname, class: 'form-control' %>
+  </div>
+  <div class='form-group'>
+    <%= b.label :abbrev, class: 'control-group' %>
+    <%= b.text_field :abbrev, class: 'form-control' %>
+  </div>
+  <div class='form-group'>
+    <%= b.label :avatar, class: 'control-group' %>
+    <%= b.file_field :avatar, class: 'form-control' %>
+  </div>
   <%= b.submit 'Submit' %>
 <% end %>
 

@@ -8,7 +8,7 @@
       <% @open_hours.each do |h| %>
         <tr class='hour'>
         	<td class="building">
-        		<div class="building_thumb"><%= image_tag(h.building.image_path) %></div>
+        		<div class="building_thumb"><%= image_tag(h.building.avatar.url(:thumb)) %></div>
         		<div class="building_name"><%= h.building.fullname %></div>
         	</td>
 			    <td class="member_info">

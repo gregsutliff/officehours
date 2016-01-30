@@ -10,7 +10,7 @@
   </tr>
   <% @buildings.each do |b| %>
     <tr>
-      <td><%= image_tag(b.image_path) %></td>
+      <td><%= image_tag(b.avatar.url(:thumb)) %></td>
       <td><%= b.fullname %></td>
       <td><%= b.abbrev %></td>
       <td><%= link_to('Edit', edit_admin_building_path(b)) %> <%=link_to('Destroy', admin_building_path(b), method: 'Delete') %></td>
