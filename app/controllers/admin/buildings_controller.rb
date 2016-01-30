@@ -1,6 +1,7 @@
 class Admin::BuildingsController < ApplicationController
   def index
     @buildings = Building.all
+    respond_to :html, :js
   end
 
   def show
@@ -12,8 +13,8 @@ class Admin::BuildingsController < ApplicationController
   end
 
   def create
-    @building = Building.create(admin_params)
-    respond_to :html, :js
+    @building = Building.create(building_params)
+    respond_to :html, :js, :xml
   end
 
   def edit
@@ -32,10 +33,12 @@ class Admin::BuildingsController < ApplicationController
     building = Building.find(params[:id])
     building.delete
   end
+
+  private
+
+    def building_params
+      params.require(:building).permit(:fullname, :abbrev, :avatar)
+    end
+
 end
 
-private
-
-def admin_params
-  params.require(:building).permit(:fullname, :abbrev, :avatar)
-end

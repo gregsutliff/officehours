@@ -22,20 +22,19 @@ class Admin::MembersController < ApplicationController
 
   def new
     @member = Member.new
-    respond_to :js
+    respond_to :js, :html
   end
 
   def create
-    @member = Member.new
-    @member.update(admin_params)
-    respond_to :js
+    @member = Member.create(member_params)
+    respond_to :js, :html, :xml
   end
 
   def update
     flash[:notice] = 'Member was successfully updated.'
     @member = Member.find(params[:id])
     @member.update(admin_params)
-    respond_to :js
+    respond_to :js, :html
   end
 
   def destroy
@@ -46,30 +45,32 @@ class Admin::MembersController < ApplicationController
     redirect_to admin_members_path
   end
 
+
+  private
+
+    def member_params
+      params.require(:member).permit(:firstname, :lastname, :building_id, :door_number, :department_id, :email)
+    end
+
+    def redirect_non_admin
+      redirect_to root_path unless current_user.role == 1
+    end
+
+    def search_term
+      params[:search].blank? ? '*' : params[:search]
+    end
+
+    def page
+      params[:page] || 1
+    end
+
+    def sort_column
+      %w[firstname lastname building_fullname department_name].include?(params[:sort]) ? params[:sort] : 'department_name'
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+    end
+
 end
 
-private
-
-def admin_params
-  params.require(:member).permit(:firstname, :lastname, :building_id, :door_number, :department_id, :email)
-end
-
-def redirect_non_admin
-  redirect_to root_path unless current_user.role == 1
-end
-
-def search_term
-  params[:search].blank? ? '*' : params[:search]
-end
-
-def page
-  params[:page] || 1
-end
-
-def sort_column
-  %w[firstname lastname building_fullname department_name].include?(params[:sort]) ? params[:sort] : 'department_name'
-end
-
-def sort_direction
-  %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
-end

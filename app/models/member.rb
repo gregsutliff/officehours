@@ -1,6 +1,6 @@
 class Member < ActiveRecord::Base
   require 'csv'
-  searchkick
+  searchkick callbacks: :async
 
   def search_data
     attributes.merge(
