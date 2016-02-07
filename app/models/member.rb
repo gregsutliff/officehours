@@ -10,6 +10,8 @@ class Member < ActiveRecord::Base
 
   end
 
+
+
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
       memberhash = row.to_hash
@@ -39,7 +41,10 @@ class Member < ActiveRecord::Base
     end
   end
 
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
   validates :firstname, :lastname, presence: true
+  validates :email, format: { with: VALID_EMAIL_REGEX }, allow_nil: true, uniqueness: { case_sensitive: false }
   belongs_to :department
   belongs_to :building
   has_many :office_hours, dependent: :destroy
