@@ -1,4 +1,5 @@
 class Admin::DepartmentsController < ApplicationController
+  before_filter :redirect_non_admin
   def index
     @departments = Department.all
     respond_to :html, :js
@@ -35,6 +36,10 @@ class Admin::DepartmentsController < ApplicationController
 
     def department_params
       params.require(:department).permit(:name, :abbrev)
+    end
+
+    def redirect_non_admin
+      redirect_to root unless current_user.role == 1
     end
 end
 

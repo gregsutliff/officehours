@@ -1,4 +1,5 @@
 class Admin::BuildingsController < ApplicationController
+  before_filter :redirect_non_admin
   def index
     @buildings = Building.all
     respond_to :html, :js
@@ -38,6 +39,10 @@ class Admin::BuildingsController < ApplicationController
 
     def building_params
       params.require(:building).permit(:fullname, :abbrev, :avatar)
+    end
+
+    def redirect_non_admin
+      redirect_to root unless current_user.role == 1
     end
 
 end

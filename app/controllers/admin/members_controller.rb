@@ -1,5 +1,6 @@
 class Admin::MembersController < ApplicationController
   helper_method :sort_column, :sort_direction
+  before_filter :redirect_non_admin
   def index
     redirect_non_admin
     @members = Member.includes(:department, :building, :office_hours).searching(search_term, sort_column, sort_direction, page)
