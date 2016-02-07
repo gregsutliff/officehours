@@ -11,14 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160127144959) do
+ActiveRecord::Schema.define(version: 20160207174214) do
 
   create_table "buildings", force: :cascade do |t|
     t.string   "fullname"
     t.string   "abbrev"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
-    t.string   "image_path"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -37,8 +36,6 @@ ActiveRecord::Schema.define(version: 20160127144959) do
     t.string   "lastname"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.integer  "uin"
-    t.integer  "office_id"
     t.integer  "department_id"
     t.string   "door_number"
     t.integer  "building_id"
@@ -47,7 +44,6 @@ ActiveRecord::Schema.define(version: 20160127144959) do
 
   add_index "members", ["building_id"], name: "index_members_on_building_id"
   add_index "members", ["department_id"], name: "index_members_on_department_id"
-  add_index "members", ["office_id"], name: "index_members_on_office_id"
 
   create_table "office_hours", force: :cascade do |t|
     t.integer  "day"
