@@ -49,10 +49,11 @@ class Member < ActiveRecord::Base
   # also takes a page argument in order to preserve the current page when
   # resorting tables containing multiple pages of entries.
   def self.searching(query, sort_column, sort_direction, page)
-    #
+    # if a non-empty query string is provided, then preserve that query
     if query
       search query, order: { sort_column => sort_direction },
                     page: page, per_page: 25
+    # if an empty query is provided, return all records
     else
       search '*'
     end
@@ -62,6 +63,8 @@ class Member < ActiveRecord::Base
     firstname + ' ' + lastname
   end
 
+  # hours_on_day takes an integer encoding of a weekday and returns all of the
+  # office hours that occur on that day.
   def hours_on_day(day)
     return self.office_hours.where(day: day)
   end
