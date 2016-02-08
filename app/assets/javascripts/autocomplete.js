@@ -1,21 +1,20 @@
 var ready;
 ready = function() {
     var buildings = new Bloodhound({
-      remote: {url: "/building/autocomplete?query=%QUERY", wildcard: '%QUERY'},
+      remote: {url: "/buildings/autocomplete?query=%QUERY", wildcard: '%QUERY'},
       datumTokenizer: function(d) {
-              return Bloodhound.tokenizers.whitespace(d.fullname, d.abbrev); },
+        return Bloodhound.tokenizers.whitespace(d.fullname, d.abbrev); },
       queryTokenizer: Bloodhound.tokenizers.whitespace
-	});
+	  });
 
 	var departments = new Bloodhound({
-		remote: {url: "/department/autocomplete?query=%QUERY", wildcard: '%QUERY'},
+		remote: {url: "/departments/autocomplete?query=%QUERY", wildcard: '%QUERY'},
 		datumTokenizer: function(d) {
               return Bloodhound.tokenizers.whitespace(d.name); },
       	queryTokenizer: Bloodhound.tokenizers.whitespace
 	});
 
 	// initialize the bloodhound suggestion engine
-
 	var promise = buildings.initialize();
 	var promise = departments.initialize();
 
