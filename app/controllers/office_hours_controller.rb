@@ -1,6 +1,5 @@
 class OfficeHoursController < ApplicationController
   def index
-    redirect_curators
     fetch_hours
   end
 
@@ -12,10 +11,6 @@ class OfficeHoursController < ApplicationController
 
   def day
     Time.now.strftime('%w')
-  end
-
-  def redirect_curators
-    redirect_to(curate_url) if current_user.role == 2
   end
 
   def fetch_hours
