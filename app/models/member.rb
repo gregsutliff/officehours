@@ -59,6 +59,7 @@ class Member < ActiveRecord::Base
     end
   end
 
+  # Returns the member's fullname
   def fullname
     firstname + ' ' + lastname
   end
