@@ -1,3 +1,10 @@
+  <div class='col-xs-12 bg-primary'>
+    Please ensure that your headers include 'firstname', 'lastname', 'department', and 'email'.
+  </div>
+
+  <br />
+  <br />
+
   <div class='col-xs-4'>
     <%= form_tag import_admin_members_path, multipart: true, class: 'form-inline' do %>
       <%= file_field_tag :file %>

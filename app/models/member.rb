@@ -18,26 +18,14 @@ class Member < ActiveRecord::Base
       firstname = memberhash['firstname']
       lastname = memberhash['lastname']
       email = memberhash['email']
-      member = Member.where(email: email)
-      department = Department.where(name: memberhash[:department])
-      door = memberhash['door']
-      building = Building.where(fullname: memberhash[:building])
-      if building.count == 1
-        building_id = building.first.id
-      else
-        building_id = 1
-      end
-      if department.count == 1
-        department_id = department.first.id
-      else
-        department_id = 1
-      end
-      clean_hash = { firstname: firstname, lastname: lastname, email: email, department_id: department_id, building_id: building_id, door_number: door }
-      if member.count == 1
-        member.first.update_attributes(clean_hash)
-      else
-        Member.create!(clean_hash)
-      end
+      department = Department.find_by(name: memberhash['department']) || Department.create(name: memberhash['department'], abbrev: memberhash['department'][0..3])
+      department = department.id
+      door = memberhash[:door]
+      clean_hash = { firstname: firstname, lastname: lastname, email: email, department_id: department, door_number: door }
+      member = Member.find_by(email: email) || Member.new
+      member.update(clean_hash)
+      member.save
+
     end
   end
 
@@ -50,7 +38,7 @@ class Member < ActiveRecord::Base
   has_many :office_hours, dependent: :destroy
 
   delegate :name, to: :department, prefix: true
-  delegate :fullname, to: :building, prefix: true
+  delegate :fullname, to: :building, prefix: true, allow_nil: true
 
   def self.searching(query, sort_column, sort_direction, page)
     if search

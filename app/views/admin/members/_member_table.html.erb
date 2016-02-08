@@ -22,9 +22,9 @@
   <tr class='member_row'>
     <td><%= m.firstname %></td>
     <td><%= m.lastname %></td>
-    <td><%= m.department.name %></td>
-    <td><%= m.building.abbrev + " " + m.door_number %></td>
-    <td><%= m.email %></td>
+    <td><%= m.department.name unless m.department.blank? %></td>
+    <td><%= m.building.abbrev + " " + m.door_number unless m.building.blank? %></td>
+    <td><%= m.email unless m.email.blank? %></td>
     <td>
       <ul>
         <% m.office_hours.each do |h| %>
