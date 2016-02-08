@@ -1,11 +1,15 @@
 require 'faker'
 
 namespace :db do
-  desc "Fill database with sample data"
-  task :populate => :environment do
+  desc 'Fill database with sample data'
+  task populate: :environment do
     Rake::Task['db:reset'].invoke
 
-    departments = [ %w(Philosophy phil), %w(Biology bio), %w(Mathematics math), %w(Political\ Science poli-sci)]
+    departments = [%w(Philosophy phil),
+                   %w(Biology bio),
+                   %w(Mathematics math),
+                   %w(Political\ Science poli-sci)
+                  ]
 
     departments.each do |n|
       Department.create(name: n[0], abbrev: n[1])
@@ -40,16 +44,24 @@ namespace :db do
       member.save
     end
 
-    User.create(email: 'organizer@gmail.com', password: 'password', role: 3, confirmed_at: Time.now)
+    User.create(email: 'student@gmail.com',
+                password: 'password',
+                role: 3,
+                confirmed_at: Time.now)
 
-    User.create(email: 'admin@gmail.com', password: 'password', role: 1, confirmed_at: Time.now)
+    User.create(email: 'admin@gmail.com',
+                password: 'password',
+                role: 1,
+                confirmed_at: Time.now)
 
     members = Member.all
 
     members.each do |m|
       2.times do
-        times = random_hour(01,22)
-        m.office_hours << OfficeHour.create(day: Faker::Number.between(0,6), start: times[0], stop: times[1])
+        times = random_hour(01, 22)
+        m.office_hours << OfficeHour.create(day: Faker::Number.between(0, 6),
+                                            start: times[0],
+                                            stop: times[1])
         m.save
       end
     end
