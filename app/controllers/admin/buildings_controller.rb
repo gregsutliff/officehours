@@ -26,7 +26,7 @@ class Admin::BuildingsController < ApplicationController
   def update
     building = Building.find(params[:id])
     building.update(building_params)
-    redirect_to admin_buildings_url and return
+    redirect_to admin_buildings_url && return
     respond_to :html, :js
   end
 
@@ -37,13 +37,11 @@ class Admin::BuildingsController < ApplicationController
 
   private
 
-    def building_params
-      params.require(:building).permit(:fullname, :abbrev, :avatar)
-    end
+  def building_params
+    params.require(:building).permit(:fullname, :abbrev, :avatar)
+  end
 
-    def redirect_non_admin
-      redirect_to root unless current_user.role == 1
-    end
-
+  def redirect_non_admin
+    redirect_to root unless current_user.role == 1
+  end
 end
-

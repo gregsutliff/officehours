@@ -3,17 +3,17 @@ class Admin::MembersController < ApplicationController
   before_filter :redirect_non_admin
   def index
     redirect_non_admin
-    @members = Member.includes(:department, :building, :office_hours).searching(search_term, sort_column, sort_direction, page)
+    @members = Member.includes(:department, :building, :office_hours)
+                     .searching(search_term, sort_column, sort_direction, page)
     @member = Member.new
   end
 
   def upload
-
   end
 
   def import
     Member.import(params[:file])
-    redirect_to admin_members_path, notice: "Members Imported."
+    redirect_to admin_members_path, notice: 'Members Imported.'
   end
 
   def edit
@@ -46,32 +46,35 @@ class Admin::MembersController < ApplicationController
     redirect_to admin_members_path
   end
 
-
   private
 
-    def member_params
-      params.require(:member).permit(:firstname, :lastname, :building_id, :door_number, :department_id, :email)
-    end
+  def member_params
+    params.require(:member).permit(:firstname, :lastname, :building_id,
+                                   :door_number, :department_id, :email)
+  end
 
-    def redirect_non_admin
-      redirect_to root_path unless current_user.role == 1
-    end
+  def redirect_non_admin
+    redirect_to root_path unless current_user.role == 1
+  end
 
-    def search_term
-      params[:search].blank? ? '*' : params[:search]
-    end
+  def search_term
+    params[:search].blank? ? '*' : params[:search]
+  end
 
-    def page
-      params[:page] || 1
-    end
+  def page
+    params[:page] || 1
+  end
 
-    def sort_column
-      %w[firstname lastname building_fullname department_name].include?(params[:sort]) ? params[:sort] : 'department_name'
+  def sort_column
+    permitted_opts = %w(firstname lastname building_fullname department_name)
+    if permitted_opts.include?(params[:sort])
+      params[:sort]
+    else
+      'department_name'
     end
+  end
 
-    def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
-    end
-
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+  end
 end
-

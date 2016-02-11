@@ -34,13 +34,11 @@ class Admin::DepartmentsController < ApplicationController
 
   private
 
-    def department_params
-      params.require(:department).permit(:name, :abbrev)
-    end
+  def department_params
+    params.require(:department).permit(:name, :abbrev)
+  end
 
-    def redirect_non_admin
-      redirect_to root unless current_user.role == 1
-    end
+  def redirect_non_admin
+    redirect_to root unless current_user.role == 1
+  end
 end
-
-
