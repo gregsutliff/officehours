@@ -35,7 +35,7 @@ ready = function() {
     highlight: true,
 		source: departments.ttAdapter()
 	});
-}
+};
 
 $(document).ready(ready);
 $(document).on('page:load', ready);

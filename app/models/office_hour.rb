@@ -23,7 +23,11 @@ class OfficeHour < ActiveRecord::Base
   delegate :fullname, to: :building, prefix: true
   delegate :name, to: :department, prefix: true
 
-  scope :open, -> (day, time) { where(day: day).where('? BETWEEN TIME(start) AND TIME(stop)', time) }
+  scope :open, -> (day, time) {
+                                where(day: day)
+                                .where('? BETWEEN TIME(start) AND TIME(stop)',
+                                       time)
+                              }
   scope :in_building, -> (building_id) { where(building_id: building_id) }
 
   # time_left takes a timestamp as an argument and returns the number of
