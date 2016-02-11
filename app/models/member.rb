@@ -34,15 +34,20 @@ class Member < ActiveRecord::Base
       lastname = memberhash['lastname']
       email = memberhash['email']
       door = memberhash[:door]
-      department = Department.find_by(name: memberhash['department']) || Department.create(name: memberhash['department'], abbrev: memberhash['department'][0..3])
+      department = Department.find_by(name: memberhash['department']) ||
+                   Department.create(name: memberhash['department'],
+                                     abbrev: memberhash['department'][0..3])
       department = department.id
-      clean_hash = { firstname: firstname, lastname: lastname, email: email, department_id: department, door_number: door }
+      clean_hash = { firstname: firstname,
+                     lastname: lastname,
+                     email: email,
+                     department_id: department,
+                     door_number: door }
       member = Member.find_by(email: email) || Member.new
       member.update(clean_hash)
       member.save
     end
   end
-
 
   # Member.searching is used to sort tables of members by selected columns and
   # allow the user to change the sort direction (ascending or descending). it
@@ -67,7 +72,7 @@ class Member < ActiveRecord::Base
   # hours_on_day takes an integer encoding of a weekday and returns all of the
   # office hours that occur on that day.
   def hours_on_day(day)
-    return self.office_hours.where(day: day)
+    self.office_hours.where(day: day)
   end
 
 end

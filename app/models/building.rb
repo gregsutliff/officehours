@@ -20,7 +20,7 @@ class Building < ActiveRecord::Base
   # has_attached_file is a helper provided by paperclip. Each building can have
   # an avatar image.
   has_attached_file :avatar,
-                    styles: { thumb: '70x70>'},
+                    styles: { thumb: '70x70>' },
                     default_url: ActionController::Base.helpers.asset_path('missing.png')
-  validates_attachment :avatar, content_type: { content_type: ['image/jpeg']}
+  validates_attachment :avatar, content_type: { content_type: ['image/jpeg'] }
 end
