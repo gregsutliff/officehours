@@ -6,7 +6,7 @@ class Member < ActiveRecord::Base
   searchkick callbacks: :async
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-  validates :firstname, :lastname, presence: true
+  validates :firstname, :lastname, presence: true, length: { maximum: 25 }
   validates :email,
             format: { with: VALID_EMAIL_REGEX },
             allow_nil: true,
@@ -70,9 +70,8 @@ class Member < ActiveRecord::Base
   end
 
   # hours_on_day takes an integer encoding of a weekday and returns all of the
-  # office hours that occur on that day.
+  # office hours that occur on that day. Sunday is 0.
   def hours_on_day(day)
-    self.office_hours.where(day: day)
+    office_hours.where(day: day)
   end
-
 end
