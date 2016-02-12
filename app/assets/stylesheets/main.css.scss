@@ -1,20 +1,25 @@
+// Colors
+$body-bg: #f5f8fa;
+$nav-color: #e1e8ed;
+$table-bg: #ffffff;
+$table-border: #ddd;
 
+//Breaks
 $break-small: 320px;
 $break-large: 1200px;
-
 
 #logout {
   line-height: 45px;
 }
 
 body {
-  background-color: #f5f8fa;
+  background-color: $body-bg;
 }
 
 
 /* Search Boxes */
 .navbar {
-  border-bottom: 1px solid #e1e8ed;
+  border-bottom: 1px solid $nav-color;
 }
 
 .search_button {
@@ -24,13 +29,11 @@ body {
 
 .search_box {
   border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
 }
 
 .form-inline .form-control {
-  width: auto;
   display: inline-block;
+  width: auto;
 }
 
 .form-inline .form-group {
@@ -61,13 +64,13 @@ body {
 }
 
 .hour {
-  background-color: white;
-  border-bottom: 1px solid #ddd;
-  border-left: 1px solid #ddd;
-  border-right: 1px solid #ddd;
+  background-color: $table-bg;
+  border-bottom: 1px solid $table-border;
+  border-left: 1px solid $table-border;
+  border-right: 1px solid $table-border;
 
   td {
-    border: none;
+    border: 0;
   }
 
   tr {
@@ -147,7 +150,7 @@ body {
 /* Admin Member Panel */
 
 .member-table {
-  background: white;
+  background: $table-bg;
 }
 
 .btn-file {
@@ -164,7 +167,7 @@ input#search {
 }
 
 .btn-file input[type=file] {
-  background: white;
+  background: $table-bg;
   cursor: inherit;
   display: block;
   filter: alpha(opacity = 0);
