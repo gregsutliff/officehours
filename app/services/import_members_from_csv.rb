@@ -1,15 +1,11 @@
-class Importer
-  require 'csv'
+require 'csv'
+
+class ImportMembersFromCsv
+
   def initialize(file)
     @file = file
   end
 
-  def import
-    raise 'Abstract base method called'
-  end
-end
-
-class MemberImporter < Importer
   def import
     CSV.foreach(@file.path, headers: true) do |row|
       memberhash = row.to_hash

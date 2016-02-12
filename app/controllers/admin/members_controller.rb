@@ -12,7 +12,7 @@ class Admin::MembersController < ApplicationController
   end
 
   def import
-    importer = MemberImporter.new(params[:file])
+    importer = ImportMembersFromCsv.new(params[:file])
     importer.import
     redirect_to admin_members_path, notice: 'Members Imported.'
   end
