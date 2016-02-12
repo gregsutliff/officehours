@@ -12,7 +12,8 @@ class Admin::MembersController < ApplicationController
   end
 
   def import
-    Member.import(params[:file])
+    importer = MemberImporter.new(params[:file])
+    importer.import
     redirect_to admin_members_path, notice: 'Members Imported.'
   end
 

@@ -2,7 +2,6 @@
 # firstname and lastname. They can also have an email, have_many office_hours,
 # and belong_to one building and one department.
 class Member < ActiveRecord::Base
-  require 'csv'
   searchkick callbacks: :async
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -23,30 +22,6 @@ class Member < ActiveRecord::Base
       department_name: department_name,
       building_fullname: building_fullname
     )
-  end
-
-  # Member.import(file) takes a CSV file as an argument and uses each row to
-  # either create a new member or update the record for an existing member.
-  def self.import(file)
-    CSV.foreach(file.path, headers: true) do |row|
-      memberhash = row.to_hash
-      firstname = memberhash['firstname']
-      lastname = memberhash['lastname']
-      email = memberhash['email']
-      door = memberhash[:door]
-      department = Department.find_by(name: memberhash['department']) ||
-                   Department.create(name: memberhash['department'],
-                                     abbrev: memberhash['department'][0..3])
-      department = department.id
-      clean_hash = { firstname: firstname,
-                     lastname: lastname,
-                     email: email,
-                     department_id: department,
-                     door_number: door }
-      member = Member.find_by(email: email) || Member.new
-      member.update(clean_hash)
-      member.save
-    end
   end
 
   # Member.searching is used to sort tables of members by selected columns and
